@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — In Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+<!-- ================= NAV ================= -->
+<header id="siteHeader" class="always-solid">
+  <nav>
+    <a href="Index.html" class="logo">IN <span>FILMS</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="Index.html">Home</a></li>
+      <li><a href="Index.html#about">About</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="Index.html#films">Cinematic Films</a></li>
+      <li><a href="Index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+  </nav>
+</header>
+
+<!-- ================= LOGIN ================= -->
+<section class="admin-section" id="loginSection">
+  <div class="wrap">
+    <div class="admin-card">
+      <div class="scene-label">Admin Access</div>
+      <h2>Sign In</h2>
+      <p style="color:#888; margin-top:10px; font-size:14px;">Enter the admin password to manage your portfolio.</p>
+      <form id="loginForm" class="admin-form">
+        <div class="form-group">
+          <label for="passwordInput">Password</label>
+          <input type="password" id="passwordInput" placeholder="Enter admin password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-gold" id="loginBtn">Log In</button>
+        <div class="admin-msg" id="loginMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+<section class="admin-section" id="dashboardSection" style="display:none;">
+  <div class="wrap">
+    <div class="admin-top">
+      <div class="scene-label">Admin Dashboard</div>
+      <h2>Manage Portfolio</h2>
+      <button class="btn btn-gold" id="logoutBtn" style="margin-top:10px;">Log Out</button>
+    </div>
+
+    <!-- Upload -->
+    <div class="admin-card" style="margin-top:40px;">
+      <h3 style="margin-bottom:6px;">Upload Photo</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:20px;">JPEG, PNG, WebP, GIF, or AVIF. Images will be auto-optimized on upload.</p>
+      <form id="uploadForm" class="admin-form">
+        <div class="form-group">
+          <label for="categorySelect">Category</label>
+          <select id="categorySelect">
+            <option value="wedding">Wedding</option>
+            <option value="prewedding">Pre-Wedding</option>
+            <option value="engagement">Engagement</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fileInput">Images</label>
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" multiple required>
+          <p style="color:#888; font-size:12px; margin-top:6px;">Select multiple images to upload at once.</p>
+        </div>
+        <button type="submit" class="btn btn-gold" id="uploadBtn">Upload</button>
+        <div class="admin-msg" id="uploadMsg"></div>
+      </form>
+    </div>
+
+    <!-- Photo List -->
+    <div class="admin-card" style="margin-top:30px;">
+      <h3 style="margin-bottom:20px;">Current Photos</h3>
+      <div class="admin-photos" id="adminPhotos">
+        <p style="color:#888; font-size:13px;">Loading...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — In Films | Wedding Photography, Rewa</title>
+<meta name="description" content="Portfolio of In Films — recent frames from real weddings, pre-wedding shoots and engagement sessions across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="siteHeader" class="always-solid">
+  <nav>
+    <a href="Index.html" class="logo">IN <span>FILMS</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="Index.html">Home</a></li>
+      <li><a href="Index.html#about">About</a></li>
+      <li><a href="portfolio.html" class="current">Portfolio</a></li>
+      <li><a href="Index.html#films">Cinematic Films</a></li>
+      <li><a href="Index.html#packages">Packages</a></li>
+      <li><a href="Index.html#testimonials">Testimonials</a></li>
+      <li><a href="Index.html#contact" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </nav>
+</header>
+
+<!-- ================= PAGE HERO ================= -->
+<div class="page-hero">
+  <div class="wrap">
+    <h1>Recent<strong>Frames</strong></h1>
+    <p>A mix of weddings, pre-wedding shoots and engagements from real couples across India.</p>
+  </div>
+</div>
+
+<!-- ================= PORTFOLIO ================= -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="scene-label">The Gallery</div>
+      <h2>Browse by category</h2>
+      <p>Filter by category to see how each kind of shoot is treated differently.</p>
+    </div>
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="wedding">Weddings</button>
+      <button class="filter-btn" data-filter="prewedding">Pre-Wedding</button>
+      <button class="filter-btn" data-filter="engagement">Engagement</button>
+    </div>
+    <div class="gallery reveal" id="gallery">
+      <p id="galleryLoading" style="color:#888; font-size:13px; grid-column:1/-1; text-align:center; padding:40px 0;">Loading portfolio...</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEE MORE ================= -->
+<section class="more-section">
+  <div class="wrap more-cta reveal">
+    <div class="scene-label">Full Gallery</div>
+    <h2>Want to see more?</h2>
+    <p>Browse the complete collection of our recent work — full albums from weddings, pre-weddings and engagements.</p>
+    <a href="https://drive.google.com/drive/folders/1MXdgLHsfQg1mEK0zRf-lQf9QTq8LSzjn?usp=sharing" target="_blank" rel="noopener" class="btn btn-gold">Tap to See More &rarr;</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<div class="sprocket"></div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">IN <span>FILMS</span></div>
+        <p style="font-size:13px; margin-top:10px; max-width:280px; color:#7a7a7a;">Wedding photography &amp; cinematography, based in Rewa — shooting across India.</p>
+      </div>
+      <div class="foot-social">
+        <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener">IG</a>
+        <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener">YT</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 In Films. All rights reserved.</span>
+      <span>Rewa · Indore · Mumbai · Punjab</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://instagram.com/infilms9862" target="_blank" rel="noopener" class="ig-float" aria-label="Message us on Instagram">📷</a>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lbClose" aria-label="Close">&#10005;</button>
+  <button class="lightbox-prev" id="lbPrev" aria-label="Previous">&#10094;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <button class="lightbox-next" id="lbNext" aria-label="Next">&#10095;</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
