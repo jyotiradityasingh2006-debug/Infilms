@@ -1,0 +1,7 @@
+[build]
+  publish = "frontend"
+
+[[redirects]]
+  from = "/"
+  to = "/Index.html"
+  status = 200
