@@ -51,7 +51,7 @@ if (scenes.length && fcNum) {
 // change API_BASE to your deployed backend URL (e.g. https://api.example.com/api).
 const API_BASE = window.location.origin && window.location.origin !== 'null'
   ? window.location.origin + '/api'
-  : 'http://localhost:5000/api';
+  : 'https://infilms.onrender.com/api';
 
 const gallery = document.getElementById('gallery');
 const galleryLoading = document.getElementById('galleryLoading');
