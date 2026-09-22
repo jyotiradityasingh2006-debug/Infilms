@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testimonials — In Films | Wedding Photography, Rewa</title>
+<meta name="description" content="Words from the couples In Films has worked with — real testimonials from weddings, pre-wedding shoots and engagements across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="siteHeader" class="always-solid">
+  <nav>
+    <a href="Index.html" class="logo">IN <span>FILMS</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="Index.html" data-site="nav.home" data-default="Home">Home</a></li>
+      <li><a href="Index.html#about" data-site="nav.about" data-default="About">About</a></li>
+      <li><a href="portfolio.html" data-site="nav.portfolio" data-default="Portfolio">Portfolio</a></li>
+      <li><a href="Index.html#films" data-site="nav.films" data-default="Cinematic Films">Cinematic Films</a></li>
+      <li><a href="Index.html#packages" data-site="nav.packages" data-default="Packages">Packages</a></li>
+      <li><a href="comments.html" class="current" data-site="nav.testimonials" data-default="Testimonials">Testimonials</a></li>
+      <li><a href="Index.html#contact" class="nav-cta" data-site="nav.contact" data-default="Contact">Contact</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </nav>
+</header>
+
+<!-- ================= PAGE HERO ================= -->
+<div class="page-hero">
+  <div class="wrap">
+    <h1><span data-site="comments.hero1" data-default="In their">In their</span><strong data-site="comments.hero2" data-default="Own Words">Own Words</strong></h1>
+    <p data-site="comments.heroText" data-default="Every testimonial here is from a real couple. Read the full list — and if we shot your wedding, add your own.">Every testimonial here is from a real couple. Read the full list — and if we shot your wedding, add your own.</p>
+  </div>
+</div>
+
+<!-- ================= WRITE YOUR OWN ================= -->
+<section id="write">
+  <div class="wrap">
+    <div class="comments-wrap">
+      <div class="section-head reveal">
+        <div class="scene-label" data-site="comments.writeLabel" data-default="Add Your Testimonial">Add Your Testimonial</div>
+        <h2 data-site="comments.writeHeading" data-default="Shared your big day with us?">Shared your big day with us?</h2>
+        <p data-site="comments.writeText" data-default="Tell others what it was like. It takes a minute.">Tell others what it was like. It takes a minute.</p>
+      </div>
+      <form id="testiFormPage" class="comment-form reveal">
+        <div class="comment-form-row">
+          <div class="form-group">
+            <label for="testiNamePage" data-site="comments.nameLabel" data-default="Your name">Your name</label>
+            <input type="text" id="testiNamePage" placeholder="e.g. Aditi Sharma" maxlength="80" required data-site-placeholder="comments.namePlaceholder" data-default="e.g. Aditi Sharma">
+          </div>
+          <div class="form-group">
+            <label for="testiEmailPage" data-site="comments.emailLabel" data-default="Email (for your testimonial)">Email (for your testimonial)</label>
+            <input type="email" id="testiEmailPage" placeholder="e.g. you@example.com" maxlength="120" data-site-placeholder="comments.emailPlaceholder" data-default="e.g. you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="testiLocationPage" data-site="comments.locationLabel" data-default="City / location">City / location</label>
+            <input type="text" id="testiLocationPage" placeholder="e.g. Rewa, Madhya Pradesh" maxlength="120" data-site-placeholder="comments.locationPlaceholder" data-default="e.g. Rewa, Madhya Pradesh">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="testiTextPage" data-site="comments.textLabel" data-default="Your testimonial">Your testimonial</label>
+          <textarea id="testiTextPage" rows="4" placeholder="What was your experience like?" maxlength="2000" required data-site-placeholder="comments.textPlaceholder" data-default="What was your experience like?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" id="testiSubmitPage" data-site="comments.submitBtn" data-default="Submit Testimonial">Submit Testimonial</button>
+        <div class="admin-msg" id="testiMsgPage"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALL TESTIMONIALS ================= -->
+<section class="mist" id="allTestimonials">
+  <div class="wrap">
+    <div class="comments-wrap">
+      <div class="section-head reveal">
+        <div class="scene-label" data-site="comments.allLabel" data-default="All Testimonials">All Testimonials</div>
+        <h2 data-site="comments.allHeading" data-default="What couples say">What couples say</h2>
+      </div>
+      <div class="comment-list reveal" id="allTestiList">
+        <p style="color:#888; font-size:13px;">Loading testimonials...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<div class="sprocket"></div>
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">IN <span>FILMS</span></div>
+        <p style="font-size:13px; margin-top:10px; max-width:280px; color:#7a7a7a;" data-site="footer.tagline" data-default="Wedding photography &amp; cinematography, based in Rewa — shooting across India.">Wedding photography &amp; cinematography, based in Rewa — shooting across India.</p>
+      </div>
+      <div class="foot-social">
+        <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener" data-site="footer.ig" data-default="IG">IG</a>
+        <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener" data-site="footer.yt" data-default="YT">YT</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-site="footer.copyright" data-default="© 2026 In Films. All rights reserved.">© 2026 In Films. All rights reserved.</span>
+      <span data-site="footer.cities" data-default="Rewa · Indore · Mumbai · Punjab">Rewa · Indore · Mumbai · Punjab</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://instagram.com/infilms9862" target="_blank" rel="noopener" class="ig-float" aria-label="Message us on Instagram">📷</a>
+
+<script src="apiBase.js"></script>
+<script src="site.js"></script>
+<script src="comments.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

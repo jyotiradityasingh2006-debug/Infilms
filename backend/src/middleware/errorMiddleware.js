@@ -7,7 +7,7 @@ function errorHandler(err, req, res, next) {
     return next(err);
   }
   if (err && err.code && err.code.startsWith('LIMIT_')) {
-    return res.status(400).json({ message: 'File too large (max 10MB)' });
+    return res.status(400).json({ message: 'File too large (max 4GB)' });
   }
   const status = err.status || err.statusCode || 500;
   if (status >= 500) {

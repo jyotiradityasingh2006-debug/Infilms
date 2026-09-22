@@ -48,21 +48,81 @@ if (scenes.length && fcNum) {
 
 // ================= PORTFOLIO: DYNAMIC GALLERY =================
 // API base URL for the deployed backend.
-const API_BASE = 'https://infilms.onrender.com/api';
+window.API_BASE = window.API_BASE || (function() {
+  var p = window.location;
+  var isLocal = p.protocol === 'file:' || p.hostname === 'localhost' || p.hostname === '127.0.0.1';
+  return isLocal ? 'http://localhost:5000/api' : p.origin + '/api';
+})();
+const API_BASE = window.API_BASE;
 
 const gallery = document.getElementById('gallery');
 const galleryLoading = document.getElementById('galleryLoading');
-const filterBtns = document.querySelectorAll('.filter-btn');
+const filterBar = document.getElementById('filterBar');
+
+const FALLBACK_CATEGORIES = [
+  { key: 'wedding', name: 'Weddings' },
+  { key: 'prewedding', name: 'Pre-Wedding' },
+  { key: 'engagement', name: 'Engagement' },
+];
 
 let photos = [];
 let currentFilter = 'all';
 let lbIndex = 0;
 
+function bindFilterButtons() {
+  if (!filterBar) return;
+  const btns = filterBar.querySelectorAll('.filter-btn');
+  Array.prototype.forEach.call(btns, function(btn) {
+    btn.onclick = function() {
+      Array.prototype.forEach.call(btns, function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      renderGallery();
+    };
+  });
+}
+
+function renderFilterButtons(categories) {
+  if (!filterBar) return;
+  filterBar.innerHTML = '';
+  const all = document.createElement('button');
+  all.className = 'filter-btn active';
+  all.dataset.filter = 'all';
+  all.setAttribute('data-site', 'portfolio.filterAll');
+  all.setAttribute('data-default', 'All');
+  all.textContent = 'All';
+  filterBar.appendChild(all);
+  categories.forEach(function(c) {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.dataset.filter = c.key;
+    btn.textContent = c.name || c.key;
+    filterBar.appendChild(btn);
+  });
+  bindFilterButtons();
+  if (window.applySiteContent) window.applySiteContent();
+}
+
+async function loadCategories() {
+  if (!filterBar) return;
+  let categories = FALLBACK_CATEGORIES.slice();
+  try {
+    const res = await window.apiFetch('/categories');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.categories && data.categories.length) categories = data.categories;
+    }
+  } catch (err) {
+    // Fall back to the default categories.
+  }
+  renderFilterButtons(categories);
+}
+
 async function loadGallery() {
   if (!gallery) return;
   if (galleryLoading) galleryLoading.textContent = 'Loading portfolio...';
   try {
-    const res = await fetch(API_BASE + '/photos');
+    const res = await window.apiFetch('/photos');
     if (!res.ok) throw new Error('Request failed');
     const data = await res.json();
     photos = data.photos || [];
@@ -90,36 +150,34 @@ function renderGallery() {
     if (currentFilter !== 'all' && p.category !== currentFilter) {
       item.style.display = 'none';
     }
-    const img = document.createElement('img');
-    img.src = p.url;
-    img.alt = p.category || 'portfolio photo';
-    img.loading = 'lazy';
-    item.appendChild(img);
+    if (p.type === 'video') {
+      const vid = document.createElement('video');
+      vid.src = p.url;
+      vid.alt = 'portfolio film';
+      vid.muted = true;
+      vid.loop = true;
+      vid.playsInline = true;
+      vid.preload = 'metadata';
+      item.appendChild(vid);
+      item.addEventListener('mouseenter', () => { vid.play().catch(() => {}); });
+      item.addEventListener('mouseleave', () => { vid.pause(); });
+    } else {
+      const img = document.createElement('img');
+      img.src = p.url;
+      img.alt = p.category || 'portfolio photo';
+      img.loading = 'lazy';
+      item.appendChild(img);
+    }
     gallery.appendChild(item);
   });
 }
 
-// Filter
-if (filterBtns.length) {
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
-      renderGallery();
-      const visibleImgs = gallery.querySelectorAll('.g-item');
-      // keep photo count but toggle visibility by re-rendering
-      // (renderGallery already handles the display logic above)
-    });
-  });
-}
-
-// Re-render visibility only (avoid rebuild for smaller churn)
-// NOTE: renderGallery above rebinds lightbox listeners via delegation (on gallery), so safe.
+// Lightbox is bound below via event delegation on the gallery element.
 
 // ================= LIGHTBOX =================
 const lightbox = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImg');
+const lbVideo = document.getElementById('lbVideo');
 const lbClose = document.getElementById('lbClose');
 const lbPrev = document.getElementById('lbPrev');
 const lbNext = document.getElementById('lbNext');
@@ -150,11 +208,27 @@ function openLightbox(index) {
 function showLightboxImage() {
   const p = photos[lbIndex];
   if (!p) return;
-  lbImg.src = p.url;
+  if (p.type === 'video' && lbVideo) {
+    lbImg.style.display = 'none';
+    lbVideo.style.display = '';
+    lbVideo.src = p.url;
+    lbVideo.play().catch(() => {});
+  } else if (lbVideo) {
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    lbVideo.style.display = 'none';
+    lbImg.style.display = '';
+    lbImg.src = p.url;
+  } else {
+    lbImg.src = p.url;
+  }
 }
 
 function closeLightbox() {
   if (!lightbox) return;
+  if (lbVideo) {
+    lbVideo.pause();
+  }
   lightbox.classList.remove('open');
   lightbox.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
@@ -194,5 +268,8 @@ if (lightbox) {
   });
 }
 
-// Fire gallery load when page contains a gallery element
-if (gallery) loadGallery();
+// Fire gallery + categories load when page contains a gallery element
+if (gallery) {
+  loadCategories();
+  loadGallery();
+}

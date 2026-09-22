@@ -20,7 +20,9 @@
       <li><a href="Index.html#about">About</a></li>
       <li><a href="portfolio.html">Portfolio</a></li>
       <li><a href="Index.html#films">Cinematic Films</a></li>
+      <li><a href="comments.html">Testimonials</a></li>
       <li><a href="Index.html#contact" class="nav-cta">Contact</a></li>
+      <li id="navAdminLink" style="display:none;"><a href="admin.html" class="nav-cta">Admin</a></li>
     </ul>
   </nav>
 </header>
@@ -55,25 +57,55 @@
 
     <!-- Upload -->
     <div class="admin-card" style="margin-top:40px;">
-      <h3 style="margin-bottom:6px;">Upload Photo</h3>
-      <p style="color:#888; font-size:13px; margin-bottom:20px;">JPEG, PNG, WebP, GIF, or AVIF. Images will be auto-optimized on upload.</p>
+      <h3 style="margin-bottom:6px;">Upload Photo / Film</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:20px;">Upload a photo or a film to your gallery &mdash; films are capped at a maximum of 10 minutes.</p>
       <form id="uploadForm" class="admin-form">
         <div class="form-group">
+          <label for="mediaTypeSelect">Upload type</label>
+          <select id="mediaTypeSelect">
+            <option value="image">Photo</option>
+            <option value="video">Film / Video (5-10 min)</option>
+          </select>
+          <p style="color:#888; font-size:12px; margin-top:6px;">Films longer than 10 minutes are rejected automatically.</p>
+        </div>
+        <div class="form-group" id="categoryGroup">
           <label for="categorySelect">Category</label>
           <select id="categorySelect">
-            <option value="wedding">Wedding</option>
-            <option value="prewedding">Pre-Wedding</option>
-            <option value="engagement">Engagement</option>
+            <option value="">No category (shared gallery)</option>
           </select>
         </div>
+        <div class="form-group" id="customerGroup">
+          <label for="customerSelect">Attach to a customer (optional)</label>
+          <select id="customerSelect">
+            <option value="">Post in gallery only</option>
+          </select>
+          <p style="color:#888; font-size:12px; margin-top:6px;">If these photos belong to a couple who booked with you, pick them here and the photos will also appear inside their appointment.</p>
+        </div>
         <div class="form-group">
-          <label for="fileInput">Images</label>
+          <label for="fileInput">Files</label>
           <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" multiple required>
-          <p style="color:#888; font-size:12px; margin-top:6px;">Select multiple images to upload at once.</p>
+          <p style="color:#888; font-size:12px; margin-top:6px;" id="fileInputHint">Select one or more images to upload at once.</p>
         </div>
         <button type="submit" class="btn btn-gold" id="uploadBtn">Upload</button>
         <div class="admin-msg" id="uploadMsg"></div>
       </form>
+    </div>
+
+    <!-- Categories Manager -->
+    <div class="admin-card" style="margin-top:30px;">
+      <h3 style="margin-bottom:6px;">Portfolio Categories</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:20px;">Categories are the filter buttons on your portfolio page. Add, rename or delete them here. Renaming a category keeps the photos already in it.</p>
+      <form id="categoryForm" class="admin-form">
+        <div class="form-group">
+          <label for="categoryNameInput">New category name</label>
+          <input type="text" id="categoryNameInput" placeholder="e.g. Reception, Mehndi, Destination" maxlength="40" required>
+        </div>
+        <button type="submit" class="btn btn-gold" id="addCatBtn">Add Category</button>
+        <div class="admin-msg" id="categoryMsg"></div>
+      </form>
+      <div id="adminCategories" style="margin-top:18px;">
+        <p style="color:#888; font-size:13px;">Loading categories...</p>
+      </div>
     </div>
 
     <!-- Photo List -->
@@ -83,9 +115,41 @@
         <p style="color:#888; font-size:13px;">Loading...</p>
       </div>
     </div>
+
+    <!-- Testimonials Manager -->
+    <div class="admin-card wide" style="margin-top:40px;">
+      <h3 style="margin-bottom:6px;">Testimonials</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:20px;">Visitors post testimonials from the site. Turn on "Show on homepage" for the ones you want featured &mdash; only 3 can be shown at a time. Delete any that are off-topic or spam.</p>
+      <p style="color:#8fc98f; font-size:13px; margin-bottom:16px;" id="testiCount">Showing on homepage: 0 / 3</p>
+      <div id="adminTestimonials">
+        <p style="color:#888; font-size:13px;">Loading...</p>
+      </div>
+    </div>
+
+    <!-- Appointments -->
+    <div class="admin-card wide" style="margin-top:30px;">
+      <h3 style="margin-bottom:6px;">Appointments</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:20px;">Visitors book a shoot date from the homepage. Delete the ones you've handled.</p>
+      <p style="color:#8fc98f; font-size:13px; margin-bottom:16px;" id="apptCount">Appointments: 0</p>
+      <div id="adminAppointments">
+        <p style="color:#888; font-size:13px;">Loading...</p>
+      </div>
+    </div>
+
+    <!-- Homepage Content Editor -->
+    <div class="admin-card wide" style="margin-top:40px;">
+      <h3 style="margin-bottom:6px;">Homepage Content</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:20px;">Edit the headings and paragraphs on your homepage. Want to make a change? Go ahead &mdash; just type and press Save.</p>
+      <div id="siteEditorFields"></div>
+      <div class="admin-form-actions" style="margin-top:16px;">
+        <button class="btn btn-gold" id="siteSaveBtn">Save Content</button>
+      </div>
+      <div class="admin-msg" id="siteMsg"></div>
+    </div>
   </div>
 </section>
 
+<script src="apiBase.js"></script>
 <script src="admin.js"></script>
 </body>
 </html>

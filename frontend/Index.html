@@ -17,13 +17,13 @@
   <nav>
     <a href="#home" class="logo">IN <span>FILMS</span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="#films">Cinematic Films</a></li>
-      <li><a href="#packages">Packages</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact" class="nav-cta">Contact</a></li>
+      <li><a href="#home" data-site="nav.home" data-default="Home">Home</a></li>
+      <li><a href="#about" data-site="nav.about" data-default="About">About</a></li>
+      <li><a href="portfolio.html" data-site="nav.portfolio" data-default="Portfolio">Portfolio</a></li>
+      <li><a href="#films" data-site="nav.films" data-default="Cinematic Films">Cinematic Films</a></li>
+      <li><a href="#packages" data-site="nav.packages" data-default="Packages">Packages</a></li>
+      <li><a href="#testimonials" data-site="nav.testimonials" data-default="Testimonials">Testimonials</a></li>
+      <li><a href="#contact" class="nav-cta" data-site="nav.contact" data-default="Contact">Contact</a></li>
     </ul>
     <button class="menu-btn" id="menuBtn">☰</button>
   </nav>
@@ -39,14 +39,14 @@
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
   <div class="hero-inner">
-    <div class="hero-tag"><span class="dot"></span>Wedding Photography &amp; Cinematography · Rewa, MP</div>
-    <h1>Stories<strong>Worth Replaying</strong></h1>
-    <p class="sub">In Films turns your wedding day into a cinematic film and a lifetime of photographs — shot with intention, edited with restraint, remembered forever.</p>
+    <div class="hero-tag"><span class="dot"></span><span data-site="hero.tag" data-default="Wedding Photography &amp; Cinematography · Rewa, MP">Wedding Photography &amp; Cinematography · Rewa, MP</span></div>
+    <h1><span class="hero-h1-l1" data-site="hero.heading1" data-default="Stories">Stories</span><strong data-site="hero.heading2" data-default="Worth Replaying">Worth Replaying</strong></h1>
+    <p class="sub" data-site="hero.sub" data-default="In Films turns your wedding day into a cinematic film and a lifetime of photographs — shot with intention, edited with restraint, remembered forever.">In Films turns your wedding day into a cinematic film and a lifetime of photographs — shot with intention, edited with restraint, remembered forever.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-gold">Book Your Date</a>
-      <a href="#films" class="btn btn-outline">Watch Our Films</a>
+      <a href="#contact" class="btn btn-gold" data-site="hero.cta1" data-default="Book Your Date">Book Your Date</a>
+      <a href="#films" class="btn btn-outline" data-site="hero.cta2" data-default="Watch Our Films">Watch Our Films</a>
     </div>
-    <div class="hero-locations">Based in <b>Rewa</b> · Shooting across <b>Indore</b> · <b>Mumbai</b> · <b>Punjab</b> · &amp; beyond</div>
+    <div class="hero-locations" data-site="hero.locations" data-default="Based in Rewa · Shooting across Indore · Mumbai · Punjab · &amp; beyond">Based in <b>Rewa</b> · Shooting across <b>Indore</b> · <b>Mumbai</b> · <b>Punjab</b> · &amp; beyond</div>
   </div>
 </section>
 <div class="sprocket"></div>
@@ -58,23 +58,23 @@
       <div class="about-frame reveal">
         <img src="https://res.cloudinary.com/igittitk/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg" alt="Bridal portrait shot by In Films">
         <div class="about-stat-card">
-          <div class="num">3</div>
-          <div class="lbl">States Covered<br>This Season</div>
+          <div class="num" data-site="about.statNum" data-default="3">3</div>
+          <div class="lbl" data-site="about.statLabel" data-default="States Covered This Season">States Covered<br>This Season</div>
         </div>
       </div>
       <div class="about-copy reveal">
-        <div class="scene-label">Scene 01 — The Studio</div>
-        <h2 style="margin-bottom:22px;">A Rewa-based crew, chasing weddings across India</h2>
-        <p class="lede">In Films is a wedding photography and cinematography studio based in Rewa, Madhya Pradesh, serving couples across the country.</p>
-        <p>We specialise in timeless photographs and cinematic wedding films that capture genuine emotion over posed perfection — the shaky laugh during the vows, the father's hand on his daughter's shoulder, the first look no one rehearsed.</p>
-        <p>Every frame is shot on professional Lumix cameras and cut together with the same patience a film editor gives a feature — because a wedding, like a film, deserves a real edit, not a template.</p>
+        <div class="scene-label" data-site="about.label" data-default="Scene 01 — The Studio">Scene 01 — The Studio</div>
+        <h2 style="margin-bottom:22px;" data-site="about.heading" data-default="A Rewa-based crew, chasing weddings across India">A Rewa-based crew, chasing weddings across India</h2>
+        <p class="lede" data-site="about.lede" data-default="In Films is a wedding photography and cinematography studio based in Rewa, Madhya Pradesh, serving couples across the country.">In Films is a wedding photography and cinematography studio based in Rewa, Madhya Pradesh, serving couples across the country.</p>
+        <p data-site="about.p1" data-default="We specialise in timeless photographs and cinematic wedding films that capture genuine emotion over posed perfection — the shaky laugh during the vows, the father's hand on his daughter's shoulder, the first look no one rehearsed.">We specialise in timeless photographs and cinematic wedding films that capture genuine emotion over posed perfection — the shaky laugh during the vows, the father's hand on his daughter's shoulder, the first look no one rehearsed.</p>
+        <p data-site="about.p2" data-default="Every frame is shot on professional Lumix cameras and cut together with the same patience a film editor gives a feature — because a wedding, like a film, deserves a real edit, not a template.">Every frame is shot on professional Lumix cameras and cut together with the same patience a film editor gives a feature — because a wedding, like a film, deserves a real edit, not a template.</p>
         <ul class="why-list">
-          <li>Experienced wedding crew</li>
-          <li>Cinematic storytelling</li>
-          <li>High-end Lumix cameras</li>
-          <li>Destination wedding coverage</li>
-          <li>Fast, dependable delivery</li>
-          <li>Personalised planning</li>
+          <li data-site="about.why.0" data-default="Experienced wedding crew">Experienced wedding crew</li>
+          <li data-site="about.why.1" data-default="Cinematic storytelling">Cinematic storytelling</li>
+          <li data-site="about.why.2" data-default="High-end Lumix cameras">High-end Lumix cameras</li>
+          <li data-site="about.why.3" data-default="Destination wedding coverage">Destination wedding coverage</li>
+          <li data-site="about.why.4" data-default="Fast, dependable delivery">Fast, dependable delivery</li>
+          <li data-site="about.why.5" data-default="Personalised planning">Personalised planning</li>
         </ul>
       </div>
     </div>
@@ -85,22 +85,22 @@
 <section class="dark" id="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="scene-label">Scene 02 — What We Shoot</div>
-      <h2>Coverage for every chapter of the wedding</h2>
-      <p>From the first haldi splash to the last dance, In Films builds a coverage plan around how your two families actually celebrate.</p>
+      <div class="scene-label" data-site="services.label" data-default="Scene 02 — What We Shoot">Scene 02 — What We Shoot</div>
+      <h2 data-site="services.heading" data-default="Coverage for every chapter of the wedding">Coverage for every chapter of the wedding</h2>
+      <p data-site="services.text" data-default="From the first haldi splash to the last dance, In Films builds a coverage plan around how your two families actually celebrate.">From the first haldi splash to the last dance, In Films builds a coverage plan around how your two families actually celebrate.</p>
     </div>
   </div>
   <div class="wrap">
     <div class="services-grid reveal">
-      <div class="service-card"><span class="idx">01</span><h3>Wedding Photography</h3><p>Full-day documentation of every ceremony, in natural light and natural colour.</p></div>
-      <div class="service-card"><span class="idx">02</span><h3>Wedding Cinematography</h3><p>A cinematic film of your wedding, cut like a short story with a beginning and an end.</p></div>
-      <div class="service-card"><span class="idx">03</span><h3>Pre-Wedding Shoots</h3><p>Location-led shoots designed around you as a couple, not a template pose list.</p></div>
-      <div class="service-card"><span class="idx">04</span><h3>Engagement Photography</h3><p>Relaxed, candid coverage of the ring ceremony and the moments around it.</p></div>
-      <div class="service-card"><span class="idx">05</span><h3>Candid Photography</h3><p>Unposed, in-between moments shot quietly from the edge of the room.</p></div>
-      <div class="service-card"><span class="idx">06</span><h3>Traditional Photography</h3><p>Classic, well-lit ceremony and family portraits for the album your parents will keep.</p></div>
-      <div class="service-card"><span class="idx">07</span><h3>Bridal &amp; Groom Portraits</h3><p>Dedicated portrait sessions that give the day's main characters their close-up.</p></div>
-      <div class="service-card"><span class="idx">08</span><h3>Wedding Reels</h3><p>Short, shareable highlight reels cut for Instagram, ready within days.</p></div>
-      <div class="service-card"><span class="idx">09</span><h3>Event &amp; Product Coverage</h3><p>Sangeet, receptions and jewellery or product shoots, covered with the same eye.</p></div>
+      <div class="service-card"><span class="idx">01</span><h3 data-site="services.items.0.title" data-default="Wedding Photography">Wedding Photography</h3><p data-site="services.items.0.text" data-default="Full-day documentation of every ceremony, in natural light and natural colour.">Full-day documentation of every ceremony, in natural light and natural colour.</p></div>
+      <div class="service-card"><span class="idx">02</span><h3 data-site="services.items.1.title" data-default="Wedding Cinematography">Wedding Cinematography</h3><p data-site="services.items.1.text" data-default="A cinematic film of your wedding, cut like a short story with a beginning and an end.">A cinematic film of your wedding, cut like a short story with a beginning and an end.</p></div>
+      <div class="service-card"><span class="idx">03</span><h3 data-site="services.items.2.title" data-default="Pre-Wedding Shoots">Pre-Wedding Shoots</h3><p data-site="services.items.2.text" data-default="Location-led shoots designed around you as a couple, not a template pose list.">Location-led shoots designed around you as a couple, not a template pose list.</p></div>
+      <div class="service-card"><span class="idx">04</span><h3 data-site="services.items.3.title" data-default="Engagement Photography">Engagement Photography</h3><p data-site="services.items.3.text" data-default="Relaxed, candid coverage of the ring ceremony and the moments around it.">Relaxed, candid coverage of the ring ceremony and the moments around it.</p></div>
+      <div class="service-card"><span class="idx">05</span><h3 data-site="services.items.4.title" data-default="Candid Photography">Candid Photography</h3><p data-site="services.items.4.text" data-default="Unposed, in-between moments shot quietly from the edge of the room.">Unposed, in-between moments shot quietly from the edge of the room.</p></div>
+      <div class="service-card"><span class="idx">06</span><h3 data-site="services.items.5.title" data-default="Traditional Photography">Traditional Photography</h3><p data-site="services.items.5.text" data-default="Classic, well-lit ceremony and family portraits for the album your parents will keep.">Classic, well-lit ceremony and family portraits for the album your parents will keep.</p></div>
+      <div class="service-card"><span class="idx">07</span><h3 data-site="services.items.6.title" data-default="Bridal &amp; Groom Portraits">Bridal &amp; Groom Portraits</h3><p data-site="services.items.6.text" data-default="Dedicated portrait sessions that give the day's main characters their close-up.">Dedicated portrait sessions that give the day's main characters their close-up.</p></div>
+      <div class="service-card"><span class="idx">08</span><h3 data-site="services.items.7.title" data-default="Wedding Reels">Wedding Reels</h3><p data-site="services.items.7.text" data-default="Short, shareable highlight reels cut for Instagram, ready within days.">Short, shareable highlight reels cut for Instagram, ready within days.</p></div>
+      <div class="service-card"><span class="idx">09</span><h3 data-site="services.items.8.title" data-default="Event &amp; Product Coverage">Event &amp; Product Coverage</h3><p data-site="services.items.8.text" data-default="Sangeet, receptions and jewellery or product shoots, covered with the same eye.">Sangeet, receptions and jewellery or product shoots, covered with the same eye.</p></div>
     </div>
   </div>
 </section>
@@ -109,12 +109,12 @@
 <!-- ================= EQUIPMENT ================= -->
 <section class="dark" style="padding-top:70px;">
   <div class="wrap">
-    <div class="scene-label reveal">Scene 03 — Behind the Lens</div>
-    <h2 class="reveal" style="color:#fff; font-size:26px; max-width:520px;">Shot on professional Panasonic Lumix bodies</h2>
+    <div class="scene-label reveal" data-site="equipment.label" data-default="Scene 03 — Behind the Lens">Scene 03 — Behind the Lens</div>
+    <h2 class="reveal" style="color:#fff; font-size:26px; max-width:520px;" data-site="equipment.heading" data-default="Shot on professional Panasonic Lumix bodies">Shot on professional Panasonic Lumix bodies</h2>
     <div class="gear-strip reveal">
-      <div class="gear-item"><div class="g-name">Panasonic Lumix S1</div><div class="g-tag">Full-Frame Cinema</div></div>
-      <div class="gear-item"><div class="g-name">Panasonic Lumix S1R</div><div class="g-tag">High-Res Portraits</div></div>
-      <div class="gear-item"><div class="g-name">Panasonic Lumix S5IIX</div><div class="g-tag">Hybrid Video Body</div></div>
+      <div class="gear-item"><div class="g-name" data-site="equipment.items.0.name" data-default="Panasonic Lumix S1">Panasonic Lumix S1</div><div class="g-tag" data-site="equipment.items.0.tag" data-default="Full-Frame Cinema">Full-Frame Cinema</div></div>
+      <div class="gear-item"><div class="g-name" data-site="equipment.items.1.name" data-default="Panasonic Lumix S1R">Panasonic Lumix S1R</div><div class="g-tag" data-site="equipment.items.1.tag" data-default="High-Res Portraits">High-Res Portraits</div></div>
+      <div class="gear-item"><div class="g-name" data-site="equipment.items.2.name" data-default="Panasonic Lumix S5IIX">Panasonic Lumix S5IIX</div><div class="g-tag" data-site="equipment.items.2.tag" data-default="Hybrid Video Body">Hybrid Video Body</div></div>
     </div>
   </div>
 </section>
@@ -124,12 +124,12 @@
 <section class="dark" id="films">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="scene-label">Scene 04 — Cinematic Films</div>
-      <h2>Wedding films, cut like short stories</h2>
-      <p>Every wedding gets a highlight film with its own pace and score — not a stock template stretched over your footage. Full films are linked on our YouTube channel.</p>
+      <div class="scene-label" data-site="films.label" data-default="Scene 04 — Cinematic Films">Scene 04 — Cinematic Films</div>
+      <h2 data-site="films.heading" data-default="Wedding films, cut like short stories">Wedding films, cut like short stories</h2>
+      <p data-site="films.text" data-default="Every wedding gets a highlight film with its own pace and score — not a stock template stretched over your footage. Full films are linked on our YouTube channel.">Every wedding gets a highlight film with its own pace and score — not a stock template stretched over your footage. Full films are linked on our YouTube channel.</p>
     </div>
     <div style="text-align:center; margin-top:10px;">
-      <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener" class="btn btn-outline">See Full Films on YouTube</a>
+      <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener" class="btn btn-outline" data-site="films.cta" data-default="See Full Films on YouTube">See Full Films on YouTube</a>
     </div>
   </div>
 </section>
@@ -138,48 +138,48 @@
 <section id="packages" class="mist">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="scene-label">Scene 05 — Packages</div>
-      <h2>Coverage built around your wedding, not a price list</h2>
-      <p>Every wedding is different, so every quote is custom — these three starting points show how coverage typically scales. Reach out for exact pricing.</p>
+      <div class="scene-label" data-site="packages.label" data-default="Scene 05 — Packages">Scene 05 — Packages</div>
+      <h2 data-site="packages.heading" data-default="Coverage built around your wedding, not a price list">Coverage built around your wedding, not a price list</h2>
+      <p data-site="packages.text" data-default="Every wedding is different, so every quote is custom — these three starting points show how coverage typically scales. Reach out for exact pricing.">Every wedding is different, so every quote is custom — these three starting points show how coverage typically scales. Reach out for exact pricing.</p>
     </div>
     <div class="pkg-grid reveal">
       <div class="pkg-card">
-        <div class="p-name">Essential</div>
-        <h3>Single-Day Coverage</h3>
+        <div class="p-name" data-site="packages.cards.0.name" data-default="Essential">Essential</div>
+        <h3 data-site="packages.cards.0.sub" data-default="Single-Day Coverage">Single-Day Coverage</h3>
         <ul>
-          <li>One-day photography</li>
-          <li>Candid + traditional coverage</li>
-          <li>Edited high-resolution photos</li>
-          <li>Instagram-ready reel</li>
+          <li data-site="packages.cards.0.bullets.0" data-default="One-day photography">One-day photography</li>
+          <li data-site="packages.cards.0.bullets.1" data-default="Candid + traditional coverage">Candid + traditional coverage</li>
+          <li data-site="packages.cards.0.bullets.2" data-default="Edited high-resolution photos">Edited high-resolution photos</li>
+          <li data-site="packages.cards.0.bullets.3" data-default="Instagram-ready reel">Instagram-ready reel</li>
         </ul>
-        <a href="#contact" class="btn btn-outline" style="width:100%; justify-content:center;">Enquire</a>
+        <a href="#contact" class="btn btn-outline" style="width:100%; justify-content:center;" data-site="packages.cards.0.cta" data-default="Enquire">Enquire</a>
       </div>
       <div class="pkg-card featured">
-        <div class="pkg-badge">Most Booked</div>
-        <div class="p-name">Signature</div>
-        <h3>Full Wedding Film + Photos</h3>
+        <div class="pkg-badge" data-site="packages.cards.1.badge" data-default="Most Booked">Most Booked</div>
+        <div class="p-name" data-site="packages.cards.1.name" data-default="Signature">Signature</div>
+        <h3 data-site="packages.cards.1.sub" data-default="Full Wedding Film + Photos">Full Wedding Film + Photos</h3>
         <ul>
-          <li>Multi-day photo + film coverage</li>
-          <li>Cinematic wedding film</li>
-          <li>Candid, traditional &amp; portrait sets</li>
-          <li>Highlight reel + full film</li>
-          <li>Priority delivery</li>
+          <li data-site="packages.cards.1.bullets.0" data-default="Multi-day photo + film coverage">Multi-day photo + film coverage</li>
+          <li data-site="packages.cards.1.bullets.1" data-default="Cinematic wedding film">Cinematic wedding film</li>
+          <li data-site="packages.cards.1.bullets.2" data-default="Candid, traditional &amp; portrait sets">Candid, traditional &amp; portrait sets</li>
+          <li data-site="packages.cards.1.bullets.3" data-default="Highlight reel + full film">Highlight reel + full film</li>
+          <li data-site="packages.cards.1.bullets.4" data-default="Priority delivery">Priority delivery</li>
         </ul>
-        <a href="#contact" class="btn btn-gold" style="width:100%; justify-content:center;">Enquire</a>
+        <a href="#contact" class="btn btn-gold" style="width:100%; justify-content:center;" data-site="packages.cards.1.cta" data-default="Enquire">Enquire</a>
       </div>
       <div class="pkg-card">
-        <div class="p-name">Destination</div>
-        <h3>Travel &amp; Multi-Event</h3>
+        <div class="p-name" data-site="packages.cards.2.name" data-default="Destination">Destination</div>
+        <h3 data-site="packages.cards.2.sub" data-default="Travel &amp; Multi-Event">Travel &amp; Multi-Event</h3>
         <ul>
-          <li>Coverage outside Madhya Pradesh</li>
-          <li>Pre-wedding + wedding + reception</li>
-          <li>Full crew travel included</li>
-          <li>Complete cinematic film</li>
+          <li data-site="packages.cards.2.bullets.0" data-default="Coverage outside Madhya Pradesh">Coverage outside Madhya Pradesh</li>
+          <li data-site="packages.cards.2.bullets.1" data-default="Pre-wedding + wedding + reception">Pre-wedding + wedding + reception</li>
+          <li data-site="packages.cards.2.bullets.2" data-default="Full crew travel included">Full crew travel included</li>
+          <li data-site="packages.cards.2.bullets.3" data-default="Complete cinematic film">Complete cinematic film</li>
         </ul>
-        <a href="#contact" class="btn btn-outline" style="width:100%; justify-content:center;">Enquire</a>
+        <a href="#contact" class="btn btn-outline" style="width:100%; justify-content:center;" data-site="packages.cards.2.cta" data-default="Enquire">Enquire</a>
       </div>
     </div>
-    <p class="pkg-note">Jewellery/product shoots and album printing available on request.</p>
+    <p class="pkg-note" data-site="packages.note" data-default="Jewellery/product shoots and album printing available on request.">Jewellery/product shoots and album printing available on request.</p>
   </div>
 </section>
 
@@ -187,28 +187,39 @@
 <section class="dark" id="testimonials">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="scene-label">Scene 06 — Testimonials</div>
-      <h2 style="color:#fff;">In the couples' own words</h2>
+      <div class="scene-label" data-site="testimonials.label" data-default="Scene 06 — Testimonials">Scene 06 — Testimonials</div>
+      <h2 style="color:#fff;" data-site="testimonials.heading" data-default="In the couples' own words">In the couples' own words</h2>
     </div>
-    <div class="test-grid reveal">
-      <div class="test-card">
-        <div class="scene-tag">Rewa Wedding</div>
-        <p>They disappeared into the background so completely that half our guests didn't realise they were being filmed — and the film still caught everything.</p>
-        <div class="who">Aditi &amp; Rohan</div>
-        <div class="where">Rewa, Madhya Pradesh</div>
-      </div>
-      <div class="test-card">
-        <div class="scene-tag">Indore Pre-Wedding</div>
-        <p>We're not photogenic people and they still made the pre-wedding shoot feel easy. The reel they cut got more replies than our actual invite.</p>
-        <div class="who">Priya &amp; Karan</div>
-        <div class="where">Indore, Madhya Pradesh</div>
-      </div>
-      <div class="test-card">
-        <div class="scene-tag">Punjab Destination Wedding</div>
-        <p>Travelling with a full crew to Punjab sounded stressful, but the whole thing ran quietly and on time. The film arrived faster than we expected.</p>
-        <div class="who">Simran &amp; Gurpreet</div>
-        <div class="where">Punjab</div>
-      </div>
+    <div class="test-grid reveal" id="featuredComments">
+      <p style="grid-column:1/-1; color:#8f8f8f; font-size:13px; text-align:center; padding:30px 0;">Loading testimonials...</p>
+    </div>
+    <div class="testi-actions reveal">
+      <a href="comments.html" class="btn btn-outline" data-site="testimonials.seeAll" data-default="See All Testimonials">See All Testimonials</a>
+    </div>
+    <div class="testi-write reveal" id="testimonialFormWrap">
+      <h3 class="testi-write-title" data-site="testimonials.formTitle" data-default="Shared your wedding with us? Write a testimonial">Shared your wedding with us? Write a testimonial</h3>
+      <form id="testimonialForm" class="testi-form">
+        <div class="testi-form-row">
+          <div class="form-group">
+            <label for="testiName" data-site="comments.nameLabel" data-default="Your name">Your name</label>
+            <input type="text" id="testiName" placeholder="e.g. Aditi Sharma" maxlength="80" required data-site-placeholder="comments.namePlaceholder" data-default="e.g. Aditi Sharma">
+          </div>
+          <div class="form-group">
+            <label for="testiEmail" data-site="comments.emailLabel" data-default="Email (for your testimonial)">Email (for your testimonial)</label>
+            <input type="email" id="testiEmail" placeholder="e.g. you@example.com" maxlength="120" data-site-placeholder="comments.emailPlaceholder" data-default="e.g. you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="testiLocation" data-site="comments.locationLabel" data-default="City / location">City / location</label>
+            <input type="text" id="testiLocation" placeholder="e.g. Rewa, Madhya Pradesh" maxlength="120" data-site-placeholder="comments.locationPlaceholder" data-default="e.g. Rewa, Madhya Pradesh">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="testiText" data-site="comments.textLabel" data-default="Your testimonial">Your testimonial</label>
+          <textarea id="testiText" rows="4" placeholder="What was your experience like?" maxlength="2000" required data-site-placeholder="comments.textPlaceholder" data-default="What was your experience like?"></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" id="testimonialSubmit" data-site="comments.submitBtn" data-default="Submit Testimonial">Submit Testimonial</button>
+        <div class="admin-msg" id="testimonialMsg"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -219,24 +230,60 @@
   <div class="wrap">
     <div class="contact-grid">
       <div class="contact-copy reveal">
-        <div class="scene-label">Scene 07 — Get In Touch</div>
-        <h2>Let's talk about your wedding date</h2>
-        <p>Tell us your date and city and we'll walk you through coverage options — most couples hear back within a day.</p>
+        <div class="scene-label" data-site="contact.label" data-default="Scene 07 — Get In Touch">Scene 07 — Get In Touch</div>
+        <h2 data-site="contact.heading" data-default="Let's talk about your wedding date">Let's talk about your wedding date</h2>
+        <p data-site="contact.text" data-default="Tell us your date and city and we'll walk you through coverage options — most couples hear back within a day.">Tell us your date and city and we'll walk you through coverage options — most couples hear back within a day.</p>
         <div class="contact-list">
           <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener">
-            <span class="ic">📷</span> DM us @infilms9862
+            <span class="ic">📷</span> <span data-site="contact.ig" data-default="DM us @infilms9862">DM us @infilms9862</span>
           </a>
           <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener">
-            <span class="ic">▶</span> Watch us on YouTube
+            <span class="ic">▶</span> <span data-site="contact.yt" data-default="Watch us on YouTube">Watch us on YouTube</span>
           </a>
           <div class="row">
-            <span class="ic">📍</span> Rewa, Madhya Pradesh, India
+            <span class="ic">📍</span> <span data-site="contact.location" data-default="Rewa, Madhya Pradesh, India">Rewa, Madhya Pradesh, India</span>
           </div>
         </div>
       </div>
-      <div class="map-frame reveal">
-        <iframe src="https://www.google.com/maps?q=Rewa,+Madhya+Pradesh&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="In Films location, Rewa"></iframe>
-      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOOK APPOINTMENT ================= -->
+<section class="mist" id="book">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="scene-label" data-site="booking.label" data-default="Book Your Shoot">Book Your Shoot</div>
+      <h2 data-site="booking.heading" data-default="Reserve your date">Reserve your date</h2>
+      <p data-site="booking.text" data-default="Tell us when you need us and a little about the day — we'll confirm availability and lock in your date.">Tell us when you need us and a little about the day — we'll confirm availability and lock in your date.</p>
+    </div>
+    <div class="testi-write reveal">
+      <form id="appointmentForm" class="testi-form">
+        <div class="testi-form-row">
+          <div class="form-group">
+            <label for="apptName" data-site="booking.nameLabel" data-default="Your name">Your name</label>
+            <input type="text" id="apptName" placeholder="e.g. Aditi Sharma" maxlength="80" required data-site-placeholder="booking.namePlaceholder" data-default="e.g. Aditi Sharma">
+          </div>
+          <div class="form-group">
+            <label for="apptEmail" data-site="booking.emailLabel" data-default="Email (so we can find you)">Email (so we can find you)</label>
+            <input type="email" id="apptEmail" placeholder="e.g. you@example.com" maxlength="120" required data-site-placeholder="booking.emailPlaceholder" data-default="e.g. you@example.com">
+          </div>
+          <div class="form-group">
+            <label for="apptLocation" data-site="booking.locationLabel" data-default="City / location">City / location</label>
+            <input type="text" id="apptLocation" placeholder="e.g. Rewa, Madhya Pradesh" maxlength="120" data-site-placeholder="booking.locationPlaceholder" data-default="e.g. Rewa, Madhya Pradesh">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="apptDate" data-site="booking.dateLabel" data-default="Preferred shoot date">Preferred shoot date</label>
+          <input type="date" id="apptDate" required>
+        </div>
+        <div class="form-group">
+          <label for="apptDesc" data-site="booking.descLabel" data-default="What do you need?">What do you need?</label>
+          <textarea id="apptDesc" rows="3" placeholder="A short note about your wedding or shoot..." maxlength="2000" data-site-placeholder="booking.descPlaceholder" data-default="A short note about your wedding or shoot..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" id="apptSubmit" data-site="booking.submitBtn" data-default="Book Appointment">Book Appointment</button>
+        <div class="admin-msg" id="apptMsg"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -248,22 +295,26 @@
     <div class="foot-grid">
       <div>
         <div class="foot-logo">IN <span>FILMS</span></div>
-        <p style="font-size:13px; margin-top:10px; max-width:280px; color:#7a7a7a;">Wedding photography &amp; cinematography, based in Rewa — shooting across India.</p>
+        <p style="font-size:13px; margin-top:10px; max-width:280px; color:#7a7a7a;" data-site="footer.tagline" data-default="Wedding photography &amp; cinematography, based in Rewa — shooting across India.">Wedding photography &amp; cinematography, based in Rewa — shooting across India.</p>
       </div>
       <div class="foot-social">
-        <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener">IG</a>
-        <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener">YT</a>
+        <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener" data-site="footer.ig" data-default="IG">IG</a>
+        <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener" data-site="footer.yt" data-default="YT">YT</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 In Films. All rights reserved.</span>
-      <span>Rewa · Indore · Mumbai · Punjab</span>
+      <span data-site="footer.copyright" data-default="© 2026 In Films. All rights reserved.">© 2026 In Films. All rights reserved.</span>
+      <span data-site="footer.cities" data-default="Rewa · Indore · Mumbai · Punjab">Rewa · Indore · Mumbai · Punjab</span>
     </div>
   </div>
 </footer>
 
 <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener" class="ig-float" aria-label="Message us on Instagram">📷</a>
 
+<script src="apiBase.js"></script>
+<script src="site.js"></script>
+<script src="testimonials.js"></script>
+<script src="appointments.js"></script>
 <script src="script.js"></script>
 </body>
                                                                                                                                                                   </html>

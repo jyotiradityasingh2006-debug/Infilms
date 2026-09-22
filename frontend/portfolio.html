@@ -17,13 +17,13 @@
   <nav>
     <a href="Index.html" class="logo">IN <span>FILMS</span></a>
     <ul class="nav-links" id="navLinks">
-      <li><a href="Index.html">Home</a></li>
-      <li><a href="Index.html#about">About</a></li>
-      <li><a href="portfolio.html" class="current">Portfolio</a></li>
-      <li><a href="Index.html#films">Cinematic Films</a></li>
-      <li><a href="Index.html#packages">Packages</a></li>
-      <li><a href="Index.html#testimonials">Testimonials</a></li>
-      <li><a href="Index.html#contact" class="nav-cta">Contact</a></li>
+      <li><a href="Index.html" data-site="nav.home" data-default="Home">Home</a></li>
+      <li><a href="Index.html#about" data-site="nav.about" data-default="About">About</a></li>
+      <li><a href="portfolio.html" class="current" data-site="nav.portfolio" data-default="Portfolio">Portfolio</a></li>
+      <li><a href="Index.html#films" data-site="nav.films" data-default="Cinematic Films">Cinematic Films</a></li>
+      <li><a href="Index.html#packages" data-site="nav.packages" data-default="Packages">Packages</a></li>
+      <li><a href="Index.html#testimonials" data-site="nav.testimonials" data-default="Testimonials">Testimonials</a></li>
+      <li><a href="Index.html#contact" class="nav-cta" data-site="nav.contact" data-default="Contact">Contact</a></li>
     </ul>
     <button class="menu-btn" id="menuBtn">☰</button>
   </nav>
@@ -32,8 +32,8 @@
 <!-- ================= PAGE HERO ================= -->
 <div class="page-hero">
   <div class="wrap">
-    <h1>Recent<strong>Frames</strong></h1>
-    <p>A mix of weddings, pre-wedding shoots and engagements from real couples across India.</p>
+    <h1><span data-site="portfolio.hero1" data-default="Recent">Recent</span><strong data-site="portfolio.hero2" data-default="Frames">Frames</strong></h1>
+    <p data-site="portfolio.heroText" data-default="A mix of weddings, pre-wedding shoots and engagements from real couples across India.">A mix of weddings, pre-wedding shoots and engagements from real couples across India.</p>
   </div>
 </div>
 
@@ -41,16 +41,11 @@
 <section id="portfolio">
   <div class="wrap">
     <div class="section-head reveal">
-      <div class="scene-label">The Gallery</div>
-      <h2>Browse by category</h2>
-      <p>Filter by category to see how each kind of shoot is treated differently.</p>
+      <div class="scene-label" data-site="portfolio.galleryLabel" data-default="The Gallery">The Gallery</div>
+      <h2 data-site="portfolio.galleryHeading" data-default="Browse by category">Browse by category</h2>
+      <p data-site="portfolio.galleryText" data-default="Filter by category to see how each kind of shoot is treated differently.">Filter by category to see how each kind of shoot is treated differently.</p>
     </div>
-    <div class="filter-bar reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="wedding">Weddings</button>
-      <button class="filter-btn" data-filter="prewedding">Pre-Wedding</button>
-      <button class="filter-btn" data-filter="engagement">Engagement</button>
-    </div>
+    <div class="filter-bar reveal" id="filterBar"></div>
     <div class="gallery reveal" id="gallery">
       <p id="galleryLoading" style="color:#888; font-size:13px; grid-column:1/-1; text-align:center; padding:40px 0;">Loading portfolio...</p>
     </div>
@@ -60,10 +55,10 @@
 <!-- ================= SEE MORE ================= -->
 <section class="more-section">
   <div class="wrap more-cta reveal">
-    <div class="scene-label">Full Gallery</div>
-    <h2>Want to see more?</h2>
-    <p>Browse the complete collection of our recent work — full albums from weddings, pre-weddings and engagements.</p>
-    <a href="https://drive.google.com/drive/folders/1MXdgLHsfQg1mEK0zRf-lQf9QTq8LSzjn?usp=sharing" target="_blank" rel="noopener" class="btn btn-gold">Tap to See More &rarr;</a>
+    <div class="scene-label" data-site="portfolio.moreLabel" data-default="Full Gallery">Full Gallery</div>
+    <h2 data-site="portfolio.moreHeading" data-default="Want to see more?">Want to see more?</h2>
+    <p data-site="portfolio.moreText" data-default="Browse the complete collection of our recent work — full albums from weddings, pre-weddings and engagements.">Browse the complete collection of our recent work — full albums from weddings, pre-weddings and engagements.</p>
+    <a href="https://drive.google.com/drive/folders/1MXdgLHsfQg1mEK0zRf-lQf9QTq8LSzjn?usp=sharing" target="_blank" rel="noopener" class="btn btn-gold" data-site="portfolio.moreCta" data-default="Tap to See More &rarr;">Tap to See More &rarr;</a>
   </div>
 </section>
 
@@ -74,16 +69,16 @@
     <div class="foot-grid">
       <div>
         <div class="foot-logo">IN <span>FILMS</span></div>
-        <p style="font-size:13px; margin-top:10px; max-width:280px; color:#7a7a7a;">Wedding photography &amp; cinematography, based in Rewa — shooting across India.</p>
+        <p style="font-size:13px; margin-top:10px; max-width:280px; color:#7a7a7a;" data-site="footer.tagline" data-default="Wedding photography &amp; cinematography, based in Rewa — shooting across India.">Wedding photography &amp; cinematography, based in Rewa — shooting across India.</p>
       </div>
       <div class="foot-social">
-        <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener">IG</a>
-        <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener">YT</a>
+        <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener" data-site="footer.ig" data-default="IG">IG</a>
+        <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener" data-site="footer.yt" data-default="YT">YT</a>
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 In Films. All rights reserved.</span>
-      <span>Rewa · Indore · Mumbai · Punjab</span>
+      <span data-site="footer.copyright" data-default="© 2026 In Films. All rights reserved.">© 2026 In Films. All rights reserved.</span>
+      <span data-site="footer.cities" data-default="Rewa · Indore · Mumbai · Punjab">Rewa · Indore · Mumbai · Punjab</span>
     </div>
   </div>
 </footer>
@@ -96,10 +91,13 @@
   <button class="lightbox-prev" id="lbPrev" aria-label="Previous">&#10094;</button>
   <div class="lightbox-img-wrap">
     <img id="lbImg" src="" alt="">
+    <video id="lbVideo" controls playsinline style="display:none;"></video>
   </div>
   <button class="lightbox-next" id="lbNext" aria-label="Next">&#10095;</button>
 </div>
 
+<script src="apiBase.js"></script>
+<script src="site.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
