@@ -2,9 +2,13 @@ const router = require('express').Router();
 const authenticate = require('../middleware/authMiddleware');
 const {
   getComments,
+  getCommentsWithEmail,
   addComment,
   setCommentFeatured,
   deleteComment,
+  getCustomerPhotosMap,
+  getAppointments,
+  normalizeEmail,
 } = require('../utils/store');
 
 const MAX_FEATURED = 3;
@@ -13,11 +17,45 @@ function newId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 }
 
-// All testimonials (public)
+// All testimonials (public). Each testimonial is matched against the
+// customer's photos (by email) and their appointment so the portraits
+// and booking linked to that testimonial can be shown alongside it.
 router.get('/', async (req, res) => {
   try {
-    const comments = await getComments();
-    res.json({ comments });
+    const [comments, customerPhotos, appointments] = await Promise.all([
+      getCommentsWithEmail(),
+      getCustomerPhotosMap(),
+      getAppointments(),
+    ]);
+    const list = comments.map((c) => {
+      const email = normalizeEmail(c.email);
+      const appointment = email
+        ? appointments.find((a) => normalizeEmail(a.email) === email)
+        : appointments.find((a) =>
+            String(a.name || '').trim().toLowerCase() === String(c.name || '').trim().toLowerCase());
+      return {
+        id: c.id,
+        name: c.name,
+        text: c.text,
+        location: c.location || '',
+        featured: !!c.featured,
+        createdAt: c.createdAt,
+        photos: (customerPhotos[email] || []).map((p) => ({
+          public_id: p.public_id,
+          url: p.url,
+          category: p.category || '',
+        })),
+        appointment: appointment
+          ? {
+              name: appointment.name,
+              location: appointment.location || '',
+              dateFrom: appointment.dateFrom || '',
+              dateTo: appointment.dateTo || '',
+            }
+          : null,
+      };
+    });
+    res.json({ comments: list });
   } catch (err) {
     console.error('Failed to load comments:', err.message);
     res.status(500).json({ message: 'Failed to load testimonials' });

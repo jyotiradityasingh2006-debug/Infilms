@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appointments — Admin | In Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+<!-- ================= NAV ================= -->
+<header id="siteHeader" class="always-solid">
+  <nav>
+    <a href="Index.html" class="logo">IN <span>FILMS</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="admin.html">Admin Dashboard</a></li>
+      <li><a href="admin-appointments.html" class="current">Appointments</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ================= APPOINTMENTS ================= -->
+<section class="admin-section">
+  <div class="wrap">
+    <div class="admin-top">
+      <div class="scene-label">Admin — Appointments</div>
+      <h2>Check Your Appointments</h2>
+      <p style="color:#888; margin-top:10px; font-size:14px;">Every booking from the homepage, each linked with the couple's photos and testimonial when the emails match.</p>
+      <a class="btn btn-gold" href="admin.html" style="margin-top:12px; display:inline-block;">&larr; Back to Dashboard</a>
+    </div>
+
+    <div class="admin-card wide" style="margin-top:40px;">
+      <h3 style="margin-bottom:6px;">Booked Shoot Dates</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:16px;">Delete the ones you've handled.</p>
+      <p style="color:#8fc98f; font-size:13px; margin-bottom:16px;" id="apptCount">Appointments: 0</p>
+      <div id="adminAppointments">
+        <p style="color:#888; font-size:13px;">Loading...</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="apiBase.js"></script>
+<script src="admin-appointments.js"></script>
+</body>
+</html>

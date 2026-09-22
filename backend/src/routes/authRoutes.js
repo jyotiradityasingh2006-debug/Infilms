@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
     }
     const valid = bcrypt.compareSync(password, hash);
     if (!valid) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Wrong password. Please try again.' });
     }
     if (!process.env.JWT_SECRET) {
       return res.status(500).json({ message: 'JWT_SECRET not configured on the server' });

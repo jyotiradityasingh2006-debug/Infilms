@@ -39,6 +39,16 @@ async function loadAllTestimonials() {
       const monogram = cEsc(String(c.name).trim().charAt(0).toUpperCase() || '?');
       const loc = c.location ? '<div class="comment-date">' + cEsc(c.location) + '</div>' : '';
       const feat = c.featured ? '<span class="comment-feat">★ On homepage</span>' : '';
+      const photosHtml = (c.photos && c.photos.length)
+        ? '<div class="comment-photos-label">Photos from this couple\'s shoot</div>' +
+          '<div class="comment-photos">' +
+            c.photos.map(function (p) {
+              return '<a class="comment-photo" href="' + cEsc(p.url) + '" target="_blank" rel="noopener" title="' + cEsc(p.category || 'photo') + '">' +
+                '<img src="' + cEsc(p.url) + '" alt="' + cEsc(p.category || 'customer photo') + '" loading="lazy">' +
+              '</a>';
+            }).join('') +
+          '</div>'
+        : '';
       item.innerHTML =
         '<div class="comment-avatar">' + monogram + '</div>' +
         '<div class="comment-body">' +
@@ -47,6 +57,7 @@ async function loadAllTestimonials() {
           feat + '</div>' +
           loc +
           '<p class="comment-text">' + cEsc(c.text) + '</p>' +
+          photosHtml +
         '</div>';
       testiList.appendChild(item);
     });

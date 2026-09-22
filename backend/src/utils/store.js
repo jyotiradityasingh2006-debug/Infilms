@@ -355,6 +355,14 @@ async function addComment(comment) {
   return normalizeComment({ ...comment, _id: comment.id });
 }
 
+// Like getComments, but also returns the customer email so routes can match
+// a testimonial against its customer's photos and appointment. The email is
+// matched server-side only and must not be sent back to the public.
+async function getCommentsWithEmail() {
+  const docs = await coll('comments').find().sort({ createdAt: -1 }).toArray();
+  return docs.map((c) => Object.assign(normalizeComment(c), { email: c.email || '' }));
+}
+
 async function setCommentFeatured(id, featured) {
   const doc = await coll('comments').findOneAndUpdate(
     { _id: id },
@@ -516,6 +524,7 @@ module.exports = {
   DEFAULT_CATEGORIES,
   deepMerge,
   getComments,
+  getCommentsWithEmail,
   addComment,
   setCommentFeatured,
   deleteComment,

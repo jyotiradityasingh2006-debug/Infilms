@@ -55,6 +55,28 @@
       <button class="btn btn-gold" id="logoutBtn" style="margin-top:10px;">Log Out</button>
     </div>
 
+    <!-- Change Admin Password -->
+    <div class="admin-card" style="margin-top:40px;">
+      <h3 style="margin-bottom:6px;">Change Admin Password</h3>
+      <p style="color:#888; font-size:13px; margin-bottom:20px;">Update the password used to log in to this admin panel. You'll use the new password the next time you sign in.</p>
+      <form id="changePwdForm" class="admin-form">
+        <div class="form-group">
+          <label for="currentPwdInput">Current password</label>
+          <input type="password" id="currentPwdInput" placeholder="Enter your current password" required autocomplete="current-password">
+        </div>
+        <div class="form-group">
+          <label for="newPwdInput">New password</label>
+          <input type="password" id="newPwdInput" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="confirmPwdInput">Confirm new password</label>
+          <input type="password" id="confirmPwdInput" placeholder="Re-enter the new password" minlength="6" required autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-gold" id="changePwdBtn">Update Password</button>
+        <div class="admin-msg" id="changePwdMsg"></div>
+      </form>
+    </div>
+
     <!-- Upload -->
     <div class="admin-card" style="margin-top:40px;">
       <h3 style="margin-bottom:6px;">Upload Photo / Film</h3>
@@ -129,11 +151,9 @@
     <!-- Appointments -->
     <div class="admin-card wide" style="margin-top:30px;">
       <h3 style="margin-bottom:6px;">Appointments</h3>
-      <p style="color:#888; font-size:13px; margin-bottom:20px;">Visitors book a shoot date from the homepage. Delete the ones you've handled.</p>
+      <p style="color:#888; font-size:13px; margin-bottom:14px;">Visitors book a shoot date from the homepage. Appointments now live on their own page &mdash; each one is linked with the couple's photos and testimonial when the emails match.</p>
       <p style="color:#8fc98f; font-size:13px; margin-bottom:16px;" id="apptCount">Appointments: 0</p>
-      <div id="adminAppointments">
-        <p style="color:#888; font-size:13px;">Loading...</p>
-      </div>
+      <a class="btn btn-gold" href="admin-appointments.html" style="display:inline-block;">Check Your Appointments &rarr;</a>
     </div>
 
     <!-- Homepage Content Editor -->
