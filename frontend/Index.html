@@ -273,9 +273,21 @@
             <input type="text" id="apptLocation" placeholder="e.g. Rewa, Madhya Pradesh" maxlength="120" data-site-placeholder="booking.locationPlaceholder" data-default="e.g. Rewa, Madhya Pradesh">
           </div>
         </div>
-        <div class="form-group">
-          <label for="apptDate" data-site="booking.dateLabel" data-default="Preferred shoot date">Preferred shoot date</label>
-          <input type="date" id="apptDate" required>
+        <div class="testi-form-row">
+          <div class="form-group">
+            <label for="apptPhone" data-site="booking.phoneLabel" data-default="Phone number">Phone number</label>
+            <input type="tel" id="apptPhone" placeholder="e.g. +91 98765 43210" maxlength="20" required data-site-placeholder="booking.phonePlaceholder" data-default="e.g. +91 98765 43210">
+          </div>
+        </div>
+        <div class="testi-form-row">
+          <div class="form-group">
+            <label for="apptDateFrom" data-site="booking.dateFromLabel" data-default="Preferred photoshoot — from">Preferred photoshoot — from</label>
+            <input type="date" id="apptDateFrom" required>
+          </div>
+          <div class="form-group">
+            <label for="apptDateTo" data-site="booking.dateToLabel" data-default="to">to</label>
+            <input type="date" id="apptDateTo" required>
+          </div>
         </div>
         <div class="form-group">
           <label for="apptDesc" data-site="booking.descLabel" data-default="What do you need?">What do you need?</label>

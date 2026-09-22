@@ -33,7 +33,13 @@ app.use(
       if (!allowed) {
         try {
           const u = new URL(origin);
-          allowed = u.hostname === 'localhost' || u.hostname === '127.0.0.1';
+          const host = u.hostname;
+          allowed =
+            host === 'localhost' ||
+            host === '127.0.0.1' ||
+            host === 'infilms.onrender.com' ||
+            host === 'infilms.netlify.app' ||
+            host.endsWith('.netlify.app');
         } catch (e) {
           allowed = false;
         }
