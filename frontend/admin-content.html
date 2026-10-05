@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Content — Admin | In Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+<section class="admin-section">
+  <div class="admin-topline">
+    <a class="admin-backlink" href="admin.html">&larr; Dashboard</a>
+    <span class="admin-topline-spacer"></span>
+    <a class="admin-backlink" href="Index.html" target="_blank" rel="noopener">View Site</a>
+    <button type="button" class="admin-logout" id="adminLogoutBtn">Log Out</button>
+  </div>
+  <div class="wrap">
+
+    <div class="admin-top wide">
+      <div class="scene-label">Admin — Section 06</div>
+      <h2>Site Content</h2>
+      <p class="admin-lead">Every heading and paragraph across the homepage, portfolio, testimonials and booking form. Open a section, type, then press Save.</p>
+    </div>
+
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>Find a section</h3>
+          <p>Type part of a section name to narrow the list.</p>
+        </div>
+        <div class="form-group" style="margin:0; flex:1 1 240px; max-width:420px; min-width:0;">
+          <input type="search" id="siteSearch" placeholder="Search sections…" style="width:100%; padding:12px 14px; background:var(--ink); color:#fff; border:1px solid rgba(255,255,255,0.2); font-family:inherit; font-size:14px;">
+        </div>
+      </div>
+      <div class="admin-form-actions" style="margin-bottom:16px;">
+        <button type="button" class="btn btn-ghost" id="siteExpandBtn">Expand all</button>
+        <button type="button" class="btn btn-ghost" id="siteCollapseBtn">Collapse all</button>
+      </div>
+      <div class="panel">
+        <div id="siteEditorFields"></div>
+        <div class="panel-foot admin-form-actions">
+          <button class="btn btn-gold" id="siteSaveBtn">Save Content</button>
+        </div>
+        <div class="admin-msg" id="siteMsg"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="apiBase.js"></script>
+<script src="admin-common.js"></script>
+<script src="admin-content.js"></script>
+</body>
+</html>

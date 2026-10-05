@@ -7,6 +7,20 @@ window.API_BASE = window.API_BASE || (function() {
 const apptForm = document.getElementById('appointmentForm');
 const apptBtn = document.getElementById('apptSubmit');
 const apptMsg = document.getElementById('apptMsg');
+const apptDateFrom = document.getElementById('apptDateFrom');
+const apptDateTo = document.getElementById('apptDateTo');
+
+// The end date is optional, but if it is filled in it can never be earlier than
+// the start date. `min` stops the native date picker offering those days, and
+// the change handler clears a now-invalid end date.
+if (apptDateFrom && apptDateTo) {
+  apptDateFrom.addEventListener('change', function () {
+    apptDateTo.min = apptDateFrom.value || '';
+    if (apptDateTo.value && apptDateTo.value < apptDateFrom.value) {
+      apptDateTo.value = '';
+    }
+  });
+}
 
 if (apptForm && apptBtn) {
   apptForm.addEventListener('submit', async function (e) {
@@ -25,8 +39,8 @@ if (apptForm && apptBtn) {
     const dateFrom = dateFromEl.trim();
     const dateTo = dateToEl.trim();
     const description = descEl.trim();
-    if (!name || !phone || !email || !dateFrom || !dateTo) return;
-    if (dateTo < dateFrom) {
+    if (!name || !phone || !email || !dateFrom) return;
+    if (dateTo && dateTo < dateFrom) {
       apptMsg.className = 'admin-msg msg-err';
       apptMsg.textContent = '"To" date must be the same as or after the "from" date.';
       return;
@@ -56,7 +70,11 @@ if (apptForm && apptBtn) {
         return;
       }
       apptMsg.className = 'admin-msg msg-ok';
-      apptMsg.textContent = 'Thank you! Your appointment request has been sent. We\'ll confirm your date soon.';
+      // dateTo is left blank for a one-day shoot; the API stores it as the
+      // same day as dateFrom.
+      apptMsg.textContent = dateTo
+        ? 'Thank you! Your appointment request has been sent. We\'ll confirm your date soon.'
+        : 'Thank you! Your single-day appointment request has been sent. We\'ll confirm your date soon.';
       apptForm.reset();
     } catch (err) {
       apptMsg.className = 'admin-msg msg-err';

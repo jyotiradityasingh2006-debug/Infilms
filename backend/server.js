@@ -15,6 +15,7 @@ const commentRoutes = require('./src/routes/commentRoutes');
 const appointmentRoutes = require('./src/routes/appointmentRoutes');
 const siteRoutes = require('./src/routes/siteRoutes');
 const categoryRoutes = require('./src/routes/categoryRoutes');
+const heroRoutes = require('./src/routes/heroRoutes');
 const { notFound, errorHandler } = require('./src/middleware/errorMiddleware');
 
 const app = express();
@@ -72,6 +73,7 @@ app.use('/api/comments', commentRoutes);
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/site', siteRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/hero-images', heroRoutes);
 
 const FRONTEND_DIR = path.join(__dirname, '..', 'frontend');
 app.use(express.static(FRONTEND_DIR));

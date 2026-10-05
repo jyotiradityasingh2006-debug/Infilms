@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photos &amp; Films — Admin | In Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+<section class="admin-section">
+  <div class="admin-topline">
+    <a class="admin-backlink" href="admin.html">&larr; Dashboard</a>
+    <span class="admin-topline-spacer"></span>
+    <a class="admin-backlink" href="Index.html" target="_blank" rel="noopener">View Site</a>
+    <button type="button" class="admin-logout" id="adminLogoutBtn">Log Out</button>
+  </div>
+  <div class="wrap">
+
+    <div class="admin-top wide">
+      <div class="scene-label">Admin — Section 01</div>
+      <h2>Photos &amp; Films</h2>
+      <p class="admin-lead">Upload new work to your portfolio, attach photos to a couple who booked with you, and remove anything that should not be public.</p>
+    </div>
+
+    <!-- Upload -->
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>Upload</h3>
+          <p>Films are capped at 10 minutes and are compressed automatically.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <form id="uploadForm" class="admin-form" style="margin-top:0;">
+          <div class="form-group">
+            <label for="mediaTypeSelect">Upload type</label>
+            <select id="mediaTypeSelect">
+              <option value="image">Photo</option>
+              <option value="video">Film / Video (5-10 min)</option>
+            </select>
+          </div>
+          <div class="form-group" id="categoryGroup">
+            <label for="categorySelect">Category</label>
+            <select id="categorySelect">
+              <option value="">No category (shared gallery)</option>
+            </select>
+            <p style="color:#888; font-size:12px; margin-top:6px;">Categories are the filter buttons on the portfolio page.</p>
+          </div>
+          <div class="form-group" id="customerGroup">
+            <label for="customerSelect">Attach to a customer (optional)</label>
+            <select id="customerSelect">
+              <option value="">Post in gallery only</option>
+            </select>
+            <p style="color:#888; font-size:12px; margin-top:6px;">If these photos belong to a couple who booked with you, pick them here and the photos will also appear inside their appointment and testimonial.</p>
+          </div>
+          <div class="form-group">
+            <label for="fileInput">Files</label>
+            <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/gif,image/avif" multiple required>
+            <p style="color:#888; font-size:12px; margin-top:6px;" id="fileInputHint">Select one or more images to upload at once.</p>
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn-gold" id="uploadBtn">Upload</button>
+          </div>
+          <div class="admin-msg" id="uploadMsg"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>Your gallery</h3>
+          <p>Click any item to see it full size. Delete anything you no longer want online.</p>
+        </div>
+        <span class="count-pill" id="photoCount">Loading...</span>
+      </div>
+      <div class="chip-bar" id="filterBar"></div>
+      <div class="media-grid" id="adminPhotos">
+        <p class="mini-empty">Loading...</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Full-size preview -->
+<div class="admin-lightbox" id="lightbox">
+  <button type="button" class="admin-lightbox-close" id="lightboxClose">&times;</button>
+  <div id="lightboxBody"></div>
+  <p class="lb-cap" id="lightboxCap"></p>
+</div>
+
+<script src="apiBase.js"></script>
+<script src="admin-common.js"></script>
+<script src="admin-photos.js"></script>
+</body>
+</html>

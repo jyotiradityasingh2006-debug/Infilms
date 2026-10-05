@@ -22,6 +22,25 @@ const testiForm = document.getElementById('testiFormPage');
 const testiBtn = document.getElementById('testiSubmitPage');
 const testiMsg = document.getElementById('testiMsgPage');
 
+function ratingValue(form, name) {
+  if (!form) return 5;
+  const picked = form.querySelector('input[name="' + name + '"]:checked');
+  var n = picked ? parseInt(picked.value, 10) : 5;
+  if (!isFinite(n) || n < 1 || n > 5) return 5;
+  return n;
+}
+
+function starsHtml(value) {
+  var n = parseInt(value, 10);
+  if (!isFinite(n) || n < 1) n = 5;
+  if (n > 5) n = 5;
+  var out = '<div class="stars" role="img" aria-label="Rated ' + n + ' out of 5">';
+  for (var i = 1; i <= 5; i++) {
+    out += i <= n ? '&#9733;' : '<span class="off">&#9733;</span>';
+  }
+  return out + '</div>';
+}
+
 async function loadAllTestimonials() {
   if (!testiList) return;
   try {
@@ -56,6 +75,7 @@ async function loadAllTestimonials() {
           '<span class="comment-date">' + cEsc(cDate(c.createdAt)) + '</span>' +
           feat + '</div>' +
           loc +
+          starsHtml(c.rating) +
           '<p class="comment-text">' + cEsc(c.text) + '</p>' +
           photosHtml +
         '</div>';
@@ -86,7 +106,13 @@ if (testiForm && testiBtn) {
       const res = await window.apiFetch('/comments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: name, text: text, location: location, email: email }),
+        body: JSON.stringify({
+          name: name,
+          text: text,
+          location: location,
+          email: email,
+          rating: ratingValue(testiForm, 'testiRatingPage'),
+        }),
       });
       const data = await res.json();
       if (!res.ok) {

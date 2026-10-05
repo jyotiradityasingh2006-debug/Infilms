@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Categories — Admin | In Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+<section class="admin-section">
+  <div class="admin-topline">
+    <a class="admin-backlink" href="admin.html">&larr; Dashboard</a>
+    <span class="admin-topline-spacer"></span>
+    <a class="admin-backlink" href="Index.html" target="_blank" rel="noopener">View Site</a>
+    <button type="button" class="admin-logout" id="adminLogoutBtn">Log Out</button>
+  </div>
+  <div class="wrap">
+
+    <div class="admin-top wide">
+      <div class="scene-label">Admin — Section 02</div>
+      <h2>Portfolio Categories</h2>
+      <p class="admin-lead">Categories are the filter buttons on your portfolio page. Add, rename or delete them here — renaming keeps the photos already filed under it.</p>
+    </div>
+
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>Add a category</h3>
+          <p>Short labels work best: Reception, Mehndi, Destination.</p>
+        </div>
+        <span class="count-pill" id="categoryCount">Loading...</span>
+      </div>
+      <div class="panel">
+        <form id="categoryForm" class="admin-form" style="margin-top:0;">
+          <div class="form-group">
+            <label for="categoryNameInput">New category name</label>
+            <input type="text" id="categoryNameInput" placeholder="e.g. Reception, Mehndi, Destination" maxlength="40" required>
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn-gold" id="addCatBtn">Add Category</button>
+          </div>
+          <div class="admin-msg" id="categoryMsg"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>Your categories</h3>
+          <p>Each row shows how many photos sit under it.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div id="adminCategories">
+          <p class="mini-empty">Loading categories...</p>
+        </div>
+      </div>
+      <div class="admin-note">Deleting a category keeps its photos in the gallery — they simply lose their own filter button and move into the shared gallery.</div>
+    </div>
+
+  </div>
+</section>
+
+<script src="apiBase.js"></script>
+<script src="admin-common.js"></script>
+<script src="admin-categories.js"></script>
+</body>
+</html>

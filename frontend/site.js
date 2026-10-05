@@ -28,6 +28,14 @@ async function applySiteContent() {
         el.textContent = val;
       }
     });
+    document.querySelectorAll('[data-site-img]').forEach(function (el) {
+      var url = siteGetPath(site, el.getAttribute('data-site-img'));
+      if (typeof url === 'string' && url.trim()) el.src = url.trim();
+    });
+    document.querySelectorAll('[data-site-alt]').forEach(function (el) {
+      var alt = siteGetPath(site, el.getAttribute('data-site-alt'));
+      if (typeof alt === 'string') el.alt = alt;
+    });
   } catch (err) {
     // Keep the default text already in the page.
   }

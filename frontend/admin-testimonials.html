@@ -6,45 +6,46 @@
 <title>Testimonials — Admin | In Films</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body class="admin-body">
 
-<!-- ================= NAV ================= -->
-<header id="siteHeader" class="always-solid">
-  <nav>
-    <a href="Index.html" class="logo">IN <span>FILMS</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="admin.html">Admin Dashboard</a></li>
-      <li><a href="admin-appointments.html">Appointments</a></li>
-      <li><a href="admin-testimonials.html" class="current">Testimonials</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- ================= TESTIMONIALS ================= -->
 <section class="admin-section">
+  <div class="admin-topline">
+    <a class="admin-backlink" href="admin.html">&larr; Dashboard</a>
+    <span class="admin-topline-spacer"></span>
+    <a class="admin-backlink" href="Index.html" target="_blank" rel="noopener">View Site</a>
+    <button type="button" class="admin-logout" id="adminLogoutBtn">Log Out</button>
+  </div>
   <div class="wrap">
-    <div class="admin-top">
-      <div class="scene-label">Admin — Testimonials</div>
-      <h2>Manage Testimonials</h2>
-      <p style="color:#888; margin-top:10px; font-size:14px;">Every review posted by visitors, each linked with the customer's photos and booking when the emails match. Turn on "Show on homepage" to feature one &mdash; only 3 can be shown at a time.</p>
-      <a class="btn btn-gold" href="admin.html" style="margin-top:12px; display:inline-block;">&larr; Back to Dashboard</a>
+
+    <div class="admin-top wide">
+      <div class="scene-label">Admin — Section 04</div>
+      <h2>Testimonials</h2>
+      <p class="admin-lead">Every review posted by visitors, each linked with the customer's photos and booking when the emails match. Turn on "Show on homepage" to feature one &mdash; only 3 can be shown at a time.</p>
     </div>
 
-    <div class="admin-card wide" style="margin-top:40px;">
-      <h3 style="margin-bottom:6px;">Visitor Testimonials</h3>
-      <p style="color:#888; font-size:13px; margin-bottom:16px;">Delete the ones that are off-topic or spam.</p>
-      <p style="color:#8fc98f; font-size:13px; margin-bottom:16px;" id="testiCount">Showing on homepage: 0 / 3</p>
-      <div id="adminTestimonials">
-        <p style="color:#888; font-size:13px;">Loading...</p>
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>Visitor testimonials</h3>
+          <p>Delete the ones that are off-topic or spam.</p>
+        </div>
+        <span class="count-pill" id="testiCount">Showing on homepage: 0 / 3</span>
+      </div>
+      <div class="panel">
+        <div id="adminTestimonials">
+          <p class="mini-empty">Loading...</p>
+        </div>
       </div>
     </div>
+
   </div>
 </section>
 
 <script src="apiBase.js"></script>
+<script src="admin-common.js"></script>
 <script src="admin-testimonials.js"></script>
 </body>
 </html>

@@ -4,11 +4,23 @@ const { coll } = require('../db');
 
 const LEGACY_DB_FILE = path.join(__dirname, '..', '..', 'data', 'db.json');
 
+const MIN_RATING = 1;
+const MAX_RATING = 5;
+
+// Ratings are whole stars between 1 and 5. Anything missing or out of range
+// falls back to a full 5 so old testimonials still show something sensible.
+function normalizeRating(value) {
+  const n = Number.parseInt(value, 10);
+  if (!Number.isFinite(n)) return MAX_RATING;
+  return Math.min(MAX_RATING, Math.max(MIN_RATING, n));
+}
+
 const SEED_COMMENTS = [
   {
     name: 'Aditi & Rohan',
     location: 'Rewa, Madhya Pradesh',
     text: 'They disappeared into the background so completely that half our guests didn\'t realise they were being filmed — and the film still caught everything.',
+    rating: 5,
     featured: true,
     createdAt: '2026-01-10T10:00:00.000Z',
   },
@@ -16,6 +28,7 @@ const SEED_COMMENTS = [
     name: 'Priya & Karan',
     location: 'Indore, Madhya Pradesh',
     text: 'We\'re not photogenic people and they still made the pre-wedding shoot feel easy. The reel they cut got more replies than our actual invite.',
+    rating: 5,
     featured: true,
     createdAt: '2026-01-20T10:00:00.000Z',
   },
@@ -23,6 +36,7 @@ const SEED_COMMENTS = [
     name: 'Simran & Gurpreet',
     location: 'Punjab',
     text: 'Travelling with a full crew to Punjab sounded stressful, but the whole thing ran quietly and on time. The film arrived faster than we expected.',
+    rating: 5,
     featured: true,
     createdAt: '2026-02-01T10:00:00.000Z',
   },
@@ -33,9 +47,9 @@ const DEFAULT_SITE = {
     home: 'Home',
     about: 'About',
     portfolio: 'Portfolio',
-    films: 'Cinematic Films',
+    films: 'Films',
     packages: 'Packages',
-    testimonials: 'Testimonials',
+    testimonials: 'Reviews',
     contact: 'Contact',
   },
   hero: {
@@ -48,6 +62,8 @@ const DEFAULT_SITE = {
     cta2: 'Watch Our Films',
   },
   about: {
+    image: 'https://res.cloudinary.com/igittitk/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg',
+    imageAlt: 'Bridal portrait shot by In Films',
     label: 'Scene 01 — The Studio',
     heading: 'A Rewa-based crew, chasing weddings across India',
     lede: 'In Films is a wedding photography and cinematography studio based in Rewa, Madhya Pradesh, serving couples across the country.',
@@ -210,8 +226,9 @@ const DEFAULT_SITE = {
     emailPlaceholder: 'e.g. you@example.com',
     locationLabel: 'City / location',
     locationPlaceholder: 'e.g. Rewa, Madhya Pradesh',
-    dateFromLabel: 'Preferred photoshoot — from',
-    dateToLabel: 'to',
+    navCta: 'Book Your Date',
+    dateFromLabel: 'Shoot date — from',
+    dateToLabel: 'to (leave empty for one day)',
     descLabel: 'What do you need?',
     descPlaceholder: 'A short note about your wedding or shoot...',
     submitBtn: 'Book Appointment',
@@ -223,6 +240,29 @@ const DEFAULT_CATEGORIES = [
   { key: 'prewedding', name: 'Pre-Wedding' },
   { key: 'engagement', name: 'Engagement' },
 ];
+
+// The hero heading cycles through these photos, so the list is deliberately short.
+const MAX_HERO_IMAGES = 5;
+
+// Photos already in Cloudinary before the hero manager existed. public_id is
+// empty on purpose: removing it from the hero must not destroy the asset,
+// because it may still be used elsewhere on the site.
+const DEFAULT_HERO_IMAGES = [
+  {
+    url: 'https://res.cloudinary.com/igittitk/image/upload/v1787245138/P1518561copy_copy_4184x2792.jpg',
+    public_id: '',
+  },
+];
+
+// Only http(s) links are accepted — the URL is injected into a CSS
+// background-image, so anything else (javascript:, data:, ...) is refused.
+function normalizeHeroImage(item) {
+  const raw = typeof item === 'string' ? item : item && typeof item.url === 'string' ? item.url : '';
+  const url = raw.trim();
+  if (!/^https?:\/\/\S+$/.test(url)) return null;
+  const publicId = item && typeof item.public_id === 'string' ? item.public_id.trim() : '';
+  return { url, public_id: publicId };
+}
 
 function clone(obj) {
   return obj == null ? obj : JSON.parse(JSON.stringify(obj));
@@ -278,6 +318,11 @@ async function ensureDefaults() {
     await coll('categories').insertOne({ _id: 'main', list: categoryList });
   }
 
+  const heroDoc = await coll('heroimages').findOne({ _id: 'main' });
+  if (!heroDoc) {
+    await coll('heroimages').insertOne({ _id: 'main', list: clone(DEFAULT_HERO_IMAGES) });
+  }
+
   const commentCount = await coll('comments').countDocuments();
   if (commentCount === 0) {
     const source = legacy && Array.isArray(legacy.comments) && legacy.comments.length ? legacy.comments : SEED_COMMENTS;
@@ -287,10 +332,46 @@ async function ensureDefaults() {
       text: c.text,
       location: c.location || '',
       email: c.email || '',
+      rating: normalizeRating(c.rating),
       featured: !!c.featured,
       createdAt: c.createdAt || new Date().toISOString(),
     }));
     if (docs.length) await coll('comments').insertMany(docs);
+  }
+
+  // Testimonials written before star ratings existed get a default so the
+  // public list never renders an empty rating.
+  try {
+    await coll('comments').updateMany(
+      { $or: [{ rating: { $exists: false } }, { rating: null }] },
+      { $set: { rating: MAX_RATING } },
+    );
+  } catch (err) {
+    console.warn('[seed] could not backfill comment ratings:', err.message);
+  }
+
+  // Nav and booking labels were shortened so the header fits on a laptop and
+  // a one-day booking is discoverable. Any value still sitting on the old
+  // default means the admin never edited it, so it is safe to move forward.
+  try {
+    const stored = await coll('site').findOne({ _id: 'main' });
+    if (stored) {
+      const labelUpdates = {};
+      if (stored.nav && stored.nav.films === 'Cinematic Films') labelUpdates['nav.films'] = DEFAULT_SITE.nav.films;
+      if (stored.nav && stored.nav.testimonials === 'Testimonials') labelUpdates['nav.testimonials'] = DEFAULT_SITE.nav.testimonials;
+      if (stored.booking && stored.booking.dateFromLabel === 'Preferred photoshoot — from') {
+        labelUpdates['booking.dateFromLabel'] = DEFAULT_SITE.booking.dateFromLabel;
+      }
+      if (stored.booking && stored.booking.dateToLabel === 'to') {
+        labelUpdates['booking.dateToLabel'] = DEFAULT_SITE.booking.dateToLabel;
+      }
+      if (Object.keys(labelUpdates).length) {
+        await coll('site').updateOne({ _id: 'main' }, { $set: labelUpdates });
+        console.log('[seed] updated site labels:', Object.keys(labelUpdates).join(', '));
+      }
+    }
+  } catch (err) {
+    console.warn('[seed] could not update site labels:', err.message);
   }
 
   const apptCount = await coll('appointments').countDocuments();
@@ -332,6 +413,7 @@ function normalizeComment(c) {
     name: c.name,
     text: c.text,
     location: c.location || '',
+    rating: normalizeRating(c.rating),
     featured: !!c.featured,
     createdAt: c.createdAt,
   };
@@ -349,6 +431,7 @@ async function addComment(comment) {
     text: comment.text,
     location: comment.location || '',
     email: comment.email || '',
+    rating: normalizeRating(comment.rating),
     featured: !!comment.featured,
     createdAt: comment.createdAt,
   });
@@ -451,6 +534,44 @@ async function removeCustomerPhotoByPublicId(publicId) {
   await coll('customerphotos').deleteMany({ photos: { $size: 0 } });
 }
 
+// ---------- hero background images ----------
+
+async function getHeroImages() {
+  const doc = await coll('heroimages').findOne({ _id: 'main' });
+  const list = doc && Array.isArray(doc.list) ? doc.list : [];
+  return list.map(normalizeHeroImage).filter(Boolean);
+}
+
+async function saveHeroImages(items) {
+  const list = (Array.isArray(items) ? items : [])
+    .map(normalizeHeroImage)
+    .filter(Boolean)
+    .slice(0, MAX_HERO_IMAGES);
+  await coll('heroimages').updateOne(
+    { _id: 'main' },
+    { $set: { list } },
+    { upsert: true },
+  );
+  return list;
+}
+
+// Appends photos, keeping the list at most MAX_HERO_IMAGES long.
+async function addHeroImages(items) {
+  const current = await getHeroImages();
+  const seen = new Set(current.map((i) => i.url));
+  const additions = (Array.isArray(items) ? items : [])
+    .map(normalizeHeroImage)
+    .filter(Boolean)
+    .filter((i) => !seen.has(i.url));
+  const list = current.concat(additions).slice(0, MAX_HERO_IMAGES);
+  await coll('heroimages').updateOne(
+    { _id: 'main' },
+    { $set: { list } },
+    { upsert: true },
+  );
+  return list;
+}
+
 // ---------- categories (kept as an ordered list) ----------
 
 async function getCategories() {
@@ -522,7 +643,11 @@ module.exports = {
   ensureDefaults,
   DEFAULT_SITE,
   DEFAULT_CATEGORIES,
+  MAX_HERO_IMAGES,
   deepMerge,
+  normalizeRating,
+  MAX_RATING,
+  MIN_RATING,
   getComments,
   getCommentsWithEmail,
   addComment,
@@ -534,6 +659,9 @@ module.exports = {
   getCustomerPhotosMap,
   addCustomerPhoto,
   removeCustomerPhotoByPublicId,
+  getHeroImages,
+  saveHeroImages,
+  addHeroImages,
   getCategories,
   addCategory,
   renameCategory,

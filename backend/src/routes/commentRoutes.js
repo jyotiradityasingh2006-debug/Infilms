@@ -9,6 +9,9 @@ const {
   getCustomerPhotosMap,
   getAppointments,
   normalizeEmail,
+  normalizeRating,
+  MIN_RATING,
+  MAX_RATING,
 } = require('../utils/store');
 
 const MAX_FEATURED = 3;
@@ -38,6 +41,7 @@ router.get('/', async (req, res) => {
         name: c.name,
         text: c.text,
         location: c.location || '',
+        rating: normalizeRating(c.rating),
         featured: !!c.featured,
         createdAt: c.createdAt,
         photos: (customerPhotos[email] || []).map((p) => ({
@@ -75,7 +79,6 @@ router.get('/featured', async (req, res) => {
     res.status(500).json({ message: 'Failed to load testimonials' });
   }
 });
-
 // Submit a new testimonial (public)
 router.post('/', async (req, res) => {
   try {
@@ -83,8 +86,16 @@ router.post('/', async (req, res) => {
     const text = (req.body && req.body.text || '').trim();
     const location = (req.body && req.body.location || '').trim();
     const email = (req.body && req.body.email || '').trim().toLowerCase();
+    const rawRating = req.body ? req.body.rating : undefined;
     if (!name || !text) {
       return res.status(400).json({ message: 'Name and testimonial are required' });
+    }
+    // A rating is optional, but if one is sent it must be 1-5 whole stars.
+    if (rawRating !== undefined && rawRating !== null && rawRating !== '') {
+      const n = Number(rawRating);
+      if (!Number.isFinite(n) || !Number.isInteger(n) || n < MIN_RATING || n > MAX_RATING) {
+        return res.status(400).json({ message: `Rating must be a whole number from ${MIN_RATING} to ${MAX_RATING}` });
+      }
     }
     if (name.length > 80 || text.length > 2000 || location.length > 120 || email.length > 120) {
       return res.status(400).json({ message: 'Testimonial too long' });
@@ -95,6 +106,7 @@ router.post('/', async (req, res) => {
       text,
       location,
       email,
+      rating: normalizeRating(rawRating),
       featured: false,
       createdAt: new Date().toISOString(),
     };

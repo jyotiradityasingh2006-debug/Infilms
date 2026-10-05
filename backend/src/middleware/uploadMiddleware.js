@@ -68,4 +68,4 @@ function removeUploaded(file) {
   }
 }
 
-module.exports = { upload, isVideoFile, removeUploaded, MAX_VIDEO_BYTES };
+module.exports = { upload, isImageFile, isVideoFile, removeUploaded, MAX_VIDEO_BYTES };

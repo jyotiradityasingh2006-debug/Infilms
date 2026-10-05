@@ -88,19 +88,22 @@ router.post('/', async (req, res) => {
     const dateFrom = (req.body && req.body.dateFrom || '').trim();
     const dateTo = (req.body && req.body.dateTo || '').trim();
     const description = (req.body && req.body.description || '').trim();
-    if (!name || !phone || !email || !dateFrom || !dateTo) {
-      return res.status(400).json({ message: 'Name, phone number, email and preferred dates are required' });
+    if (!name || !phone || !email || !dateFrom) {
+      return res.status(400).json({ message: 'Name, phone number, email and the shoot date are required' });
     }
+    // A single-day booking only needs the "from" date. Store the range as
+    // from == to so every consumer sees one consistent shape.
+    const endDate = dateTo || dateFrom;
     if (!validPhone(phone)) {
       return res.status(400).json({ message: 'Please enter a valid phone number (10-15 digits)' });
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return res.status(400).json({ message: 'Please enter a valid email address' });
     }
-    if (String(dateTo).localeCompare(String(dateFrom)) < 0) {
+    if (String(endDate).localeCompare(String(dateFrom)) < 0) {
       return res.status(400).json({ message: '"To" date must be the same as or after the "from" date' });
     }
-    if (name.length > 80 || phone.length > 20 || email.length > 120 || location.length > 120 || dateFrom.length > 20 || dateTo.length > 20 || description.length > 2000) {
+    if (name.length > 80 || phone.length > 20 || email.length > 120 || location.length > 120 || dateFrom.length > 20 || endDate.length > 20 || description.length > 2000) {
       return res.status(400).json({ message: 'Appointment details too long' });
     }
     const appointment = {
@@ -110,7 +113,7 @@ router.post('/', async (req, res) => {
       email: normalizeEmail(email),
       location,
       dateFrom,
-      dateTo,
+      dateTo: endDate,
       description,
       createdAt: new Date().toISOString(),
     };

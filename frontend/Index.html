@@ -7,7 +7,7 @@
 <meta name="description" content="In Films is a wedding photography and cinematography studio based in Rewa, Madhya Pradesh, capturing cinematic wedding stories across India.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,15 +15,15 @@
 <!-- ================= NAV ================= -->
 <header id="siteHeader">
   <nav>
-    <a href="#home" class="logo">IN <span>FILMS</span></a>
+    <a href="#home" class="logo"><img src="./assets/Infilmslogo.png" alt="In Films Logo"></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home" data-site="nav.home" data-default="Home">Home</a></li>
       <li><a href="#about" data-site="nav.about" data-default="About">About</a></li>
       <li><a href="portfolio.html" data-site="nav.portfolio" data-default="Portfolio">Portfolio</a></li>
-      <li><a href="#films" data-site="nav.films" data-default="Cinematic Films">Cinematic Films</a></li>
-      <li><a href="#packages" data-site="nav.packages" data-default="Packages">Packages</a></li>
-      <li><a href="#testimonials" data-site="nav.testimonials" data-default="Testimonials">Testimonials</a></li>
-      <li><a href="#contact" class="nav-cta" data-site="nav.contact" data-default="Contact">Contact</a></li>
+      <li><a href="#films" data-site="nav.films" data-default="Films">Films</a></li>
+      <li><a href="#testimonials" data-site="nav.testimonials" data-default="Reviews">Reviews</a></li>
+      <li><a href="#contact" data-site="nav.contact" data-default="Contact">Contact</a></li>
+      <li><a href="#book" class="nav-cta" data-site="booking.navCta" data-default="Book Your Date">Book Your Date</a></li>
     </ul>
     <button class="menu-btn" id="menuBtn">☰</button>
   </nav>
@@ -38,12 +38,14 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="home">
+  <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+  <div class="hero-dots" id="heroDots" role="tablist" aria-label="Hero background photos"></div>
   <div class="hero-inner">
     <div class="hero-tag"><span class="dot"></span><span data-site="hero.tag" data-default="Wedding Photography &amp; Cinematography · Rewa, MP">Wedding Photography &amp; Cinematography · Rewa, MP</span></div>
     <h1><span class="hero-h1-l1" data-site="hero.heading1" data-default="Stories">Stories</span><strong data-site="hero.heading2" data-default="Worth Replaying">Worth Replaying</strong></h1>
     <p class="sub" data-site="hero.sub" data-default="In Films turns your wedding day into a cinematic film and a lifetime of photographs — shot with intention, edited with restraint, remembered forever.">In Films turns your wedding day into a cinematic film and a lifetime of photographs — shot with intention, edited with restraint, remembered forever.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-gold" data-site="hero.cta1" data-default="Book Your Date">Book Your Date</a>
+        <a href="#book" class="btn btn-gold" data-site="hero.cta1" data-default="Book Your Date">Book Your Date</a>
       <a href="#films" class="btn btn-outline" data-site="hero.cta2" data-default="Watch Our Films">Watch Our Films</a>
     </div>
     <div class="hero-locations" data-site="hero.locations" data-default="Based in Rewa · Shooting across Indore · Mumbai · Punjab · &amp; beyond">Based in <b>Rewa</b> · Shooting across <b>Indore</b> · <b>Mumbai</b> · <b>Punjab</b> · &amp; beyond</div>
@@ -56,7 +58,7 @@
   <div class="wrap">
     <div class="about-grid">
       <div class="about-frame reveal">
-        <img src="https://res.cloudinary.com/igittitk/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg" alt="Bridal portrait shot by In Films">
+        <img src="https://res.cloudinary.com/igittitk/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg" alt="Bridal portrait shot by In Films" data-site-img="about.image" data-site-alt="about.imageAlt" data-default="https://res.cloudinary.com/igittitk/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg">
         <div class="about-stat-card">
           <div class="num" data-site="about.statNum" data-default="3">3</div>
           <div class="lbl" data-site="about.statLabel" data-default="States Covered This Season">States Covered<br>This Season</div>
@@ -214,6 +216,17 @@
           </div>
         </div>
         <div class="form-group">
+          <span class="form-label" id="testiRatingLabel">Rate us out of 5</span>
+          <div class="star-picker" role="radiogroup" aria-labelledby="testiRatingLabel">
+            <input type="radio" name="testiRating" id="testiStar5" value="5" checked><label for="testiStar5" title="5 stars" aria-label="5 stars">&#9733;</label>
+            <input type="radio" name="testiRating" id="testiStar4" value="4"><label for="testiStar4" title="4 stars" aria-label="4 stars">&#9733;</label>
+            <input type="radio" name="testiRating" id="testiStar3" value="3"><label for="testiStar3" title="3 stars" aria-label="3 stars">&#9733;</label>
+            <input type="radio" name="testiRating" id="testiStar2" value="2"><label for="testiStar2" title="2 stars" aria-label="2 stars">&#9733;</label>
+            <input type="radio" name="testiRating" id="testiStar1" value="1"><label for="testiStar1" title="1 star" aria-label="1 star">&#9733;</label>
+          </div>
+          <p class="form-hint">Tap a star — we read every one.</p>
+        </div>
+        <div class="form-group">
           <label for="testiText" data-site="comments.textLabel" data-default="Your testimonial">Your testimonial</label>
           <textarea id="testiText" rows="4" placeholder="What was your experience like?" maxlength="2000" required data-site-placeholder="comments.textPlaceholder" data-default="What was your experience like?"></textarea>
         </div>
@@ -224,30 +237,6 @@
   </div>
 </section>
 <div class="sprocket"></div>
-
-<!-- ================= CONTACT ================= -->
-<section id="contact">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div class="contact-copy reveal">
-        <div class="scene-label" data-site="contact.label" data-default="Scene 07 — Get In Touch">Scene 07 — Get In Touch</div>
-        <h2 data-site="contact.heading" data-default="Let's talk about your wedding date">Let's talk about your wedding date</h2>
-        <p data-site="contact.text" data-default="Tell us your date and city and we'll walk you through coverage options — most couples hear back within a day.">Tell us your date and city and we'll walk you through coverage options — most couples hear back within a day.</p>
-        <div class="contact-list">
-          <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener">
-            <span class="ic">📷</span> <span data-site="contact.ig" data-default="DM us @infilms9862">DM us @infilms9862</span>
-          </a>
-          <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener">
-            <span class="ic">▶</span> <span data-site="contact.yt" data-default="Watch us on YouTube">Watch us on YouTube</span>
-          </a>
-          <div class="row">
-            <span class="ic">📍</span> <span data-site="contact.location" data-default="Rewa, Madhya Pradesh, India">Rewa, Madhya Pradesh, India</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ================= BOOK APPOINTMENT ================= -->
 <section class="mist" id="book">
@@ -281,12 +270,13 @@
         </div>
         <div class="testi-form-row">
           <div class="form-group">
-            <label for="apptDateFrom" data-site="booking.dateFromLabel" data-default="Preferred photoshoot — from">Preferred photoshoot — from</label>
+            <label for="apptDateFrom" data-site="booking.dateFromLabel" data-default="Shoot date — from">Shoot date — from</label>
             <input type="date" id="apptDateFrom" required>
           </div>
           <div class="form-group">
-            <label for="apptDateTo" data-site="booking.dateToLabel" data-default="to">to</label>
-            <input type="date" id="apptDateTo" required>
+            <label for="apptDateTo" data-site="booking.dateToLabel" data-default="to (leave empty for one day)">to (leave empty for one day)</label>
+            <input type="date" id="apptDateTo">
+            <p class="form-hint">One-day shoot? Just leave this empty.</p>
           </div>
         </div>
         <div class="form-group">
@@ -300,13 +290,37 @@
   </div>
 </section>
 
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-copy reveal">
+        <div class="scene-label" data-site="contact.label" data-default="Scene 07 — Get In Touch">Scene 07 — Get In Touch</div>
+        <h2 data-site="contact.heading" data-default="Let's talk about your wedding date">Let's talk about your wedding date</h2>
+        <p data-site="contact.text" data-default="Tell us your date and city and we'll walk you through coverage options — most couples hear back within a day.">Tell us your date and city and we'll walk you through coverage options — most couples hear back within a day.</p>
+        <div class="contact-list">
+          <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener">
+            <span class="ic">📷</span> <span data-site="contact.ig" data-default="DM us @infilms9862">DM us @infilms9862</span>
+          </a>
+          <a href="https://m.youtube.com/@infilms9862" target="_blank" rel="noopener">
+            <span class="ic">▶</span> <span data-site="contact.yt" data-default="Watch us on YouTube">Watch us on YouTube</span>
+          </a>
+          <div class="row">
+            <span class="ic">📍</span> <span data-site="contact.location" data-default="Rewa, Madhya Pradesh, India">Rewa, Madhya Pradesh, India</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= FOOTER ================= -->
 <div class="sprocket"></div>
 <footer>
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo">IN <span>FILMS</span></div>
+        <div class="foot-logo"><img src="./assets/Infilmslogo.png" alt="In Films Logo"></div>
         <p style="font-size:13px; margin-top:10px; max-width:280px; color:#7a7a7a;" data-site="footer.tagline" data-default="Wedding photography &amp; cinematography, based in Rewa — shooting across India.">Wedding photography &amp; cinematography, based in Rewa — shooting across India.</p>
       </div>
       <div class="foot-social">
@@ -321,10 +335,12 @@
   </div>
 </footer>
 
+<a href="Index.html#book" class="book-float">Book Your Date</a>
 <a href="https://instagram.com/infilms9862" target="_blank" rel="noopener" class="ig-float" aria-label="Message us on Instagram">📷</a>
 
 <script src="apiBase.js"></script>
 <script src="site.js"></script>
+<script src="hero.js"></script>
 <script src="testimonials.js"></script>
 <script src="appointments.js"></script>
 <script src="script.js"></script>

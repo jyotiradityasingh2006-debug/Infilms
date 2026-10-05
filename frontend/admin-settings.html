@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings — Admin | In Films</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body">
+
+<section class="admin-section">
+  <div class="admin-topline">
+    <a class="admin-backlink" href="admin.html">&larr; Dashboard</a>
+    <span class="admin-topline-spacer"></span>
+    <a class="admin-backlink" href="Index.html" target="_blank" rel="noopener">View Site</a>
+    <button type="button" class="admin-logout" id="adminLogoutBtn">Log Out</button>
+  </div>
+  <div class="wrap">
+
+    <div class="admin-top wide">
+      <div class="scene-label">Admin — Section 07</div>
+      <h2>Settings</h2>
+      <p class="admin-lead">Your admin password and the browser currently signed in. There is only one admin account.</p>
+    </div>
+
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>Change admin password</h3>
+          <p>You'll use the new password the next time you sign in.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <form id="changePwdForm" class="admin-form" style="margin-top:0;">
+          <div class="form-group">
+            <label for="currentPwdInput">Current password</label>
+            <input type="password" id="currentPwdInput" placeholder="Enter your current password" required autocomplete="current-password">
+          </div>
+          <div class="form-group">
+            <label for="newPwdInput">New password</label>
+            <input type="password" id="newPwdInput" placeholder="At least 6 characters" minlength="6" required autocomplete="new-password">
+          </div>
+          <div class="form-group">
+            <label for="confirmPwdInput">Confirm new password</label>
+            <input type="password" id="confirmPwdInput" placeholder="Re-enter the new password" minlength="6" required autocomplete="new-password">
+          </div>
+          <div class="admin-form-actions">
+            <button type="submit" class="btn btn-gold" id="changePwdBtn">Update Password</button>
+          </div>
+          <div class="admin-msg" id="changePwdMsg"></div>
+        </form>
+      </div>
+    </div>
+
+    <div class="dash-block">
+      <div class="dash-head">
+        <div>
+          <h3>This session</h3>
+          <p>Where you are signed in right now.</p>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="setting-row">
+          <div>
+            <div class="sr-label" id="sessionStatus">Signed in</div>
+            <div class="sr-note" id="sessionNote">You have full access to every admin section. Use Log Out above to end this session.</div>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="sr-label">Session length</div>
+            <div class="sr-note">Sessions last 12 hours, then ask for the password again. Keep an eye on the site after that.</div>
+          </div>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="sr-label">View your site</div>
+            <div class="sr-note">Open the public site in a new tab to check your changes.</div>
+          </div>
+          <a class="btn btn-gold" href="Index.html" target="_blank" rel="noopener">Open Site &rarr;</a>
+        </div>
+      </div>
+      <div class="admin-note">Photos and films are stored on Cloudinary, so this panel only keeps the admin password — nothing else to back up here.</div>
+    </div>
+
+  </div>
+</section>
+
+<script src="apiBase.js"></script>
+<script src="admin-common.js"></script>
+<script src="admin-settings.js"></script>
+</body>
+</html>
