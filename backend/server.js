@@ -40,7 +40,8 @@ app.use(
             host === '127.0.0.1' ||
             host === 'infilms.onrender.com' ||
             host === 'infilms.netlify.app' ||
-            host.endsWith('.netlify.app');
+            host.endsWith('.netlify.app') ||
+            host.endsWith('.vercel.app');
         } catch (e) {
           allowed = false;
         }
