@@ -62,7 +62,7 @@ const DEFAULT_SITE = {
     cta2: 'Watch Our Films',
   },
   about: {
-    image: 'https://res.cloudinary.com/igittitk/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg',
+    image: 'https://res.cloudinary.com/Infilms/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg',
     imageAlt: 'Bridal portrait shot by In Films',
     label: 'Scene 01 — The Studio',
     heading: 'A Rewa-based crew, chasing weddings across India',
@@ -249,7 +249,7 @@ const MAX_HERO_IMAGES = 5;
 // because it may still be used elsewhere on the site.
 const DEFAULT_HERO_IMAGES = [
   {
-    url: 'https://res.cloudinary.com/igittitk/image/upload/v1787245138/P1518561copy_copy_4184x2792.jpg',
+    url: 'https://res.cloudinary.com/Infilms/image/upload/v1787245138/P1518561copy_copy_4184x2792.jpg',
     public_id: '',
   },
 ];

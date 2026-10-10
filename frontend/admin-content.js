@@ -21,7 +21,7 @@
       cta2: 'Watch Our Films',
     },
     about: {
-      image: 'https://res.cloudinary.com/igittitk/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg',
+      image: 'https://res.cloudinary.com/Infilms/image/upload/v1787245175/P1368438copy_copy_2792x4184.jpg',
       imageAlt: 'Bridal portrait shot by In Films',
       label: 'Scene 01 — The Studio',
       heading: 'A Rewa-based crew, chasing weddings across India',
