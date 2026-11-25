@@ -20,13 +20,16 @@
   from = "/index.html"
   to = "/"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/portfolio"
   to = "/portfolio.html"
   status = 301
+  force = true
 
 [[redirects]]
   from = "/comments"
   to = "/comments.html"
   status = 301
+  force = true
