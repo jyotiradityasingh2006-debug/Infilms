@@ -58,6 +58,7 @@ const API_BASE = window.API_BASE;
 const gallery = document.getElementById('gallery');
 const galleryLoading = document.getElementById('galleryLoading');
 const filterBar = document.getElementById('filterBar');
+const portfolioPreview = document.getElementById('portfolioPreview');
 
 const FALLBACK_CATEGORIES = [
   { key: 'wedding', name: 'Weddings' },
@@ -172,6 +173,44 @@ function renderGallery() {
   });
 }
 
+async function loadPortfolioPreview() {
+  if (!portfolioPreview) return;
+  try {
+    const res = await window.apiFetch('/photos');
+    if (!res.ok) return;
+    const data = await res.json();
+    const items = (data.photos || []).filter(p => p.type !== 'video').slice(0, 6);
+    portfolioPreview.innerHTML = '';
+    if (items.length === 0) {
+      const empty = document.createElement('p');
+      empty.className = 'portfolio-preview-empty';
+      empty.textContent = 'Portfolio photos will appear here once uploaded.';
+      portfolioPreview.appendChild(empty);
+      return;
+    }
+    items.forEach(function (p) {
+      const link = document.createElement('a');
+      link.className = 'g-item';
+      link.href = 'portfolio.html';
+      const img = document.createElement('img');
+      img.src = p.url;
+      img.alt = p.category || 'portfolio photo';
+      img.loading = 'lazy';
+      const overlay = document.createElement('div');
+      overlay.className = 'g-overlay';
+      const tag = document.createElement('div');
+      tag.className = 'g-tag';
+      tag.textContent = p.category || 'Portfolio';
+      overlay.appendChild(tag);
+      link.appendChild(img);
+      link.appendChild(overlay);
+      portfolioPreview.appendChild(link);
+    });
+  } catch (err) {
+    portfolioPreview.innerHTML = '<p class="portfolio-preview-empty">Portfolio photos will appear here once uploaded.</p>';
+  }
+}
+
 // Lightbox is bound below via event delegation on the gallery element.
 
 // ================= LIGHTBOX =================
@@ -267,6 +306,8 @@ if (lightbox) {
     if (e.key === 'ArrowRight') stepLightbox(1);
   });
 }
+
+if (portfolioPreview) loadPortfolioPreview();
 
 // Fire gallery + categories load when page contains a gallery element
 if (gallery) {

@@ -189,7 +189,7 @@ nav{
   padding-bottom:90px;
 }
 /* Rotating background photos, driven by hero.js */
-.hero-bg{ position:absolute; inset:0; z-index:0; }
+.hero-bg{ position:absolute; inset:0; z-index:0; background:url("https://res.cloudinary.com/infilms/image/upload/v1787245138/P1518561copy_copy_4184x2792.jpg") center 20%/cover no-repeat; }
 .hero-bg::after{
   content:"";
   position:absolute; inset:0;
@@ -365,6 +365,18 @@ section{ padding:110px 0; position:relative; }
   .gallery{ grid-template-columns:repeat(2,1fr); gap:4px; }
   .wrap{ padding:0 16px; }
   .g-item{ aspect-ratio:3/4; }
+}
+
+/* ---------- Portfolio preview on the homepage ---------- */
+.portfolio-preview{ padding:90px 0 100px; }
+.portfolio-preview-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:30px; margin-bottom:40px; }
+.portfolio-preview-head .section-head{ margin-bottom:0; }
+.gallery-preview .g-item{ aspect-ratio:4/5; }
+.gallery-preview .g-overlay{ opacity:1; background:linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.68) 100%); padding:16px; }
+.gallery-preview .g-overlay .g-tag{ color:#fff; }
+.portfolio-preview-empty{ grid-column:1/-1; color:#888; font-size:13px; text-align:center; padding:40px 0; }
+@media (max-width:880px){
+  .portfolio-preview-head{ flex-direction:column; align-items:flex-start; }
 }
 
 /* ---------- Cinematic films ---------- */

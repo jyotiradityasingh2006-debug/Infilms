@@ -1,8 +1,7 @@
 // ================= HERO BACKGROUND SLIDESHOW =================
 // The photos behind the homepage heading are managed from the admin panel
-// (GET /api/hero-images). They cross-fade every 5 seconds. When the admin has
-// not set any photos, .hero keeps its plain dark gradient background, so the
-// heading stays readable either way.
+// (GET /api/hero-images). They cross-fade every 5 seconds. A default photo is
+// painted in CSS so the hero fills in immediately, before the API responds.
 (function () {
   const heroBg = document.getElementById('heroBg');
   const heroDots = document.getElementById('heroDots');
@@ -66,14 +65,6 @@
 
     if (slides.length === 0) return;
 
-    // Preload the first photo so the hero never flashes empty, then reveal it.
-    const first = new Image();
-    first.onload = first.onerror = function () {
-      show(0);
-      if (slides.length > 1) start();
-    };
-    first.src = urls[0];
-
     if (heroDots && slides.length > 1) {
       slides.forEach(function (_, n) {
         const dot = document.createElement('button');
@@ -88,6 +79,9 @@
         heroDots.appendChild(dot);
       });
     }
+
+    show(0);
+    if (slides.length > 1) start();
   }
 
   document.addEventListener('visibilitychange', function () {
